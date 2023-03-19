@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a883bd95-44e4-49df-b57f-3dd3883f35df" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/easyJava-demo/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/easyJava-demo/src/main/resources/appliction.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/easyJava/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/RunApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/bean/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/bean/FieldInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/bean/TableInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildComment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildPo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/utils/DateUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/utils/JsonUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/utils/PropertiesUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/utils/StringUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/easyJava/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/easyJava/src/main/resources/template/DateTimePatternEnum.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/easyJava/src/main/resources/template/DateUtils.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-admin/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-admin/src/main/java/com/forum/ForumAdminApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-admin/src/main/java/com/forum/controller/TestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-admin/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-admin/src/main/resources/logback-spring.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-common/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/ForumCommonApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/controller/TestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-common/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-web/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-web/src/main/java/com/forum/ForumWebApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-web/src/main/java/com/forum/controller/TestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-web/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-web/src/main/resources/logback-spring.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="spring-beans.schema" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="2" />
+  </component>
+  <component name="JRebelWorkspace">
+    <option name="jrebelEnabledAutocompile" value="true" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="E:\java1\java3\idea\m2\repository" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../../../apache-maven-3.6.0" />
+        <option name="userSettingsFile" value="E:\apache-maven-3.6.0\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2NAPcOz9z4OpHhR0d73Ty4G5ZLf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../fmmall" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\java1\java3\forum\forum_java\forum\forum-admin\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.forum.controller" />
+      <recent name="com.forum" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\java1\java3\forum\forum_java\forum\forum-admin\src\main\resources" />
+      <recent name="E:\java1\java3\forum\forum_java\forum\forum-common\src\main" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.ProductInfo">
+    <configuration name="Constants" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="common.easyjava.bean.Constants" />
+      <module name="easyJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="common.easyjava.bean.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductInfo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.easyjava.entity.po.ProductInfo" />
+      <module name="easyJava-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.easyjava.entity.po.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PropertiesUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="common.easyjava.utils.PropertiesUtils" />
+      <module name="easyJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="common.easyjava.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RunApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="common.easyjava.RunApplication" />
+      <module name="easyJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="common.easyjava.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StringUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="common.easyjava.utils.StringUtils" />
+      <module name="easyJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="common.easyjava.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.PropertiesUtils" />
+      <item itemvalue="Application.RunApplication" />
+      <item itemvalue="Application.StringUtils" />
+      <item itemvalue="Application.Constants" />
+      <item itemvalue="Application.ProductInfo" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ProductInfo" />
+        <item itemvalue="Application.RunApplication" />
+        <item itemvalue="Application.Constants" />
+        <item itemvalue="Application.StringUtils" />
+        <item itemvalue="Application.PropertiesUtils" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a883bd95-44e4-49df-b57f-3dd3883f35df" name="Default Changelist" comment="" />
+      <created>1679103991865</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1679103991865</updated>
+      <workItem from="1679103995646" duration="2998000" />
+      <workItem from="1679111195728" duration="624000" />
+      <workItem from="1679111940509" duration="77000" />
+      <workItem from="1679112051101" duration="5507000" />
+      <workItem from="1679128600180" duration="621000" />
+      <workItem from="1679129261612" duration="1296000" />
+      <workItem from="1679185801023" duration="3077000" />
+      <workItem from="1679189735697" duration="744000" />
+      <workItem from="1679198429176" duration="14434000" />
+      <workItem from="1679220065993" duration="10583000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="663" y="309" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1679110921403">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="663" y="309" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679110921403" />
+    <state x="765" y="196" key="#com.intellij.ide.util.MemberChooser" timestamp="1679232947953">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="196" key="#com.intellij.ide.util.MemberChooser/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679232947953" />
+    <state x="548" y="436" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1679199052248">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="548" y="436" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679199052248" />
+    <state x="675" y="339" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1679200552343">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="675" y="339" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679200552343" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1679220303484">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679220303484" />
+    <state width="1877" height="328" key="GridCell.Tab.0.bottom" timestamp="1679238761559">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="328" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679238761559" />
+    <state width="1877" height="328" key="GridCell.Tab.0.center" timestamp="1679238761558">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="328" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679238761558" />
+    <state width="1877" height="328" key="GridCell.Tab.0.left" timestamp="1679238761556">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="328" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679238761556" />
+    <state width="1877" height="328" key="GridCell.Tab.0.right" timestamp="1679238761558">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="328" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679238761558" />
+    <state width="1877" height="328" key="GridCell.Tab.1.bottom" timestamp="1679238761559">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="328" key="GridCell.Tab.1.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679238761559" />
+    <state width="1877" height="328" key="GridCell.Tab.1.center" timestamp="1679238761559">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="328" key="GridCell.Tab.1.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679238761559" />
+    <state width="1877" height="328" key="GridCell.Tab.1.left" timestamp="1679238761559">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="328" key="GridCell.Tab.1.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679238761559" />
+    <state width="1877" height="328" key="GridCell.Tab.1.right" timestamp="1679238761559">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="328" key="GridCell.Tab.1.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679238761559" />
+    <state width="1293" height="342" key="GridCell.Tab.2.bottom" timestamp="1679134852670">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1293" height="342" key="GridCell.Tab.2.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679134852670" />
+    <state width="1293" height="342" key="GridCell.Tab.2.center" timestamp="1679134852670">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1293" height="342" key="GridCell.Tab.2.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679134852670" />
+    <state width="1293" height="342" key="GridCell.Tab.2.left" timestamp="1679134852670">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1293" height="342" key="GridCell.Tab.2.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679134852670" />
+    <state width="1293" height="342" key="GridCell.Tab.2.right" timestamp="1679134852670">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1293" height="342" key="GridCell.Tab.2.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679134852670" />
+    <state x="461" y="164" key="SettingsEditor" timestamp="1679221026367">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="164" key="SettingsEditor/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679221026367" />
+    <state x="690" y="213" key="extract.method.dialog" timestamp="1679214796865">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="213" key="extract.method.dialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679214796865" />
+    <state width="600" height="428" key="javadoc.popup" timestamp="1679222052292">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="600" height="428" key="javadoc.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679222052292" />
+    <state x="334" y="94" key="new project wizard" timestamp="1679187382497">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="334" y="94" key="new project wizard/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679187382497" />
+    <state x="616" y="173" width="670" height="676" key="search.everywhere.popup" timestamp="1679237213010">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="173" width="670" height="676" key="search.everywhere.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679237213010" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="headerInfoList" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
