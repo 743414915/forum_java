@@ -3,6 +3,7 @@ package common.easyjava;
 import common.easyjava.bean.TableInfo;
 import common.easyjava.builder.BuildBase;
 import common.easyjava.builder.BuildPo;
+import common.easyjava.builder.BuildQuery;
 import common.easyjava.builder.BuildTable;
 
 import common.easyjava.utils.JsonUtils;
@@ -20,6 +21,7 @@ public class RunApplication {
         BuildBase.execute();
         for (TableInfo tableInfo : tableInfoList) {
             BuildPo.execute(tableInfo);
+            BuildQuery.execute(tableInfo);
         }
     }
 }

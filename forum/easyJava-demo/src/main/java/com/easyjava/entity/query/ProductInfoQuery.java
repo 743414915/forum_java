@@ -1,22 +1,14 @@
-package com.easyjava.entity.po;
-
-import java.io.Serializable;
-import java.util.Date;
-
-import com.easyjava.utils.DateUtils;
-import com.easyjava.enums.DateTimePatternEnum;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+package com.easyjava.entity.query;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
- * @Description: 商品信息
+ * @Description: 商品信息查询对象
  * @auther: chong
  * @date: 2023/03/20
  */
-public class ProductInfo implements Serializable {
+public class ProductInfoQuery {
 	/**
 	 * 自增ID
  	 */
@@ -25,18 +17,23 @@ public class ProductInfo implements Serializable {
 	/**
 	 * 公司ID
  	 */
-	@JsonIgnore
 	private String companyId;
+
+	private String companyIdFuzzy;
 
 	/**
 	 * 商品编号
  	 */
 	private String code;
 
+	private String codeFuzzy;
+
 	/**
 	 * 商品名称
  	 */
 	private String productName;
+
+	private String productNameFuzzy;
 
 	/**
 	 * 价格
@@ -56,16 +53,20 @@ public class ProductInfo implements Serializable {
 	/**
 	 * 创建时间
  	 */
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date createTime;
+
+	private String createTimeStart;
+
+	private String createTimeEnd;
 
 	/**
 	 * 创建日期
  	 */
-	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createDate;
+
+	private String createDateStart;
+
+	private String createDateEnd;
 
 	/**
 	 * 库存
@@ -75,7 +76,6 @@ public class ProductInfo implements Serializable {
 	/**
 	 * 状态：1 已上架 0 未上架
  	 */
-	@JsonIgnore
 	private Integer status;
 
 	/**
@@ -179,8 +179,60 @@ public class ProductInfo implements Serializable {
 		return this.isDel;
 	}
 
-	@Override
-	public String toString() {
-		return "自增ID: " + (id == null ? "空" : id) + "; 公司ID: " + (companyId == null ? "空" : companyId) + "; 商品编号: " + (code == null ? "空" : code) + "; 商品名称: " + (productName == null ? "空" : productName) + "; 价格: " + (price == null ? "空" : price) + "; sku类型: " + (skuType == null ? "空" : skuType) + "; 颜色类型: " + (colorType == null ? "空" : colorType) + "; 创建时间: " + (createTime == null ? "空" : DateUtils.formal(createTime, DateTimePatternEnum.YYYY_MM_DD_HH_MM_SS.getPattern())) + "; 创建日期: " + (createDate == null ? "空" : DateUtils.formal(createDate, DateTimePatternEnum.YYYY_MM_DD.getPattern())) + "; 库存: " + (stock == null ? "空" : stock) + "; 状态：1 已上架 0 未上架: " + (status == null ? "空" : status) + "; 0:删除 1:正常: " + (isDel == null ? "空" : isDel);
+	public void setCompanyIdFuzzy(String companyIdFuzzy) {
+		this.companyIdFuzzy = companyIdFuzzy;
 	}
+
+	public String getCompanyIdFuzzy() {
+		return this.companyIdFuzzy;
+	}
+
+	public void setCodeFuzzy(String codeFuzzy) {
+		this.codeFuzzy = codeFuzzy;
+	}
+
+	public String getCodeFuzzy() {
+		return this.codeFuzzy;
+	}
+
+	public void setProductNameFuzzy(String productNameFuzzy) {
+		this.productNameFuzzy = productNameFuzzy;
+	}
+
+	public String getProductNameFuzzy() {
+		return this.productNameFuzzy;
+	}
+
+	public void setCreateTimeStart(String createTimeStart) {
+		this.createTimeStart = createTimeStart;
+	}
+
+	public String getCreateTimeStart() {
+		return this.createTimeStart;
+	}
+
+	public void setCreateTimeEnd(String createTimeEnd) {
+		this.createTimeEnd = createTimeEnd;
+	}
+
+	public String getCreateTimeEnd() {
+		return this.createTimeEnd;
+	}
+
+	public void setCreateDateStart(String createDateStart) {
+		this.createDateStart = createDateStart;
+	}
+
+	public String getCreateDateStart() {
+		return this.createDateStart;
+	}
+
+	public void setCreateDateEnd(String createDateEnd) {
+		this.createDateEnd = createDateEnd;
+	}
+
+	public String getCreateDateEnd() {
+		return this.createDateEnd;
+	}
+
 }

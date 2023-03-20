@@ -2,38 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a883bd95-44e4-49df-b57f-3dd3883f35df" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/easyJava-demo/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava-demo/src/main/resources/appliction.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/RunApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/bean/Constants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/bean/FieldInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/bean/TableInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildComment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildPo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/utils/DateUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/utils/JsonUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/utils/PropertiesUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/utils/StringUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/resources/template/DateTimePatternEnum.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/resources/template/DateUtils.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forum-admin/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forum-admin/src/main/java/com/forum/ForumAdminApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forum-admin/src/main/java/com/forum/controller/TestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forum-admin/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forum-admin/src/main/resources/logback-spring.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forum-common/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/ForumCommonApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/controller/TestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forum-common/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forum-web/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forum-web/src/main/java/com/forum/ForumWebApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forum-web/src/main/java/com/forum/controller/TestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forum-web/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forum-web/src/main/resources/logback-spring.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com.easyjava.entity.po/ProductInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com.easyjava.enums/DateTimePatternEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyJava-demo/src/main/java/com/easyjava/entity/po/ProductInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/easyJava-demo/src/main/java/com/easyjava/entity/po/ProductInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyJava-demo/src/main/java/com/easyjava/enums/DateTimePatternEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/RunApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/RunApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/bean/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/bean/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyJava/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/easyJava/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyJava/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/easyJava/target/classes/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,16 +79,17 @@
     <selection>jr</selection>
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\java1\java3\forum\forum_java\forum\forum-admin\src\main\resources" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.forum.controller" />
-      <recent name="com.forum" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\java1\java3\forum\forum_java\forum\forum-admin\src\main\resources" />
       <recent name="E:\java1\java3\forum\forum_java\forum\forum-common\src\main" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="common.easyjava.builder" />
+      <recent name="com.forum.controller" />
+      <recent name="com.forum" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\java1\java3\forum\forum_java\forum\forum-admin\src\main\resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -120,7 +99,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ProductInfo">
+  <component name="RunManager" selected="Application.RunApplication">
     <configuration name="Constants" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="common.easyjava.bean.Constants" />
       <module name="easyJava" />
@@ -195,8 +174,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ProductInfo" />
         <item itemvalue="Application.RunApplication" />
+        <item itemvalue="Application.ProductInfo" />
         <item itemvalue="Application.Constants" />
         <item itemvalue="Application.StringUtils" />
         <item itemvalue="Application.PropertiesUtils" />
@@ -223,6 +202,8 @@
       <workItem from="1679189735697" duration="744000" />
       <workItem from="1679198429176" duration="14434000" />
       <workItem from="1679220065993" duration="10583000" />
+      <workItem from="1679238784344" duration="259000" />
+      <workItem from="1679322062916" duration="2541000" />
     </task>
     <servers />
   </component>
@@ -250,38 +231,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679220303484" />
-    <state width="1877" height="328" key="GridCell.Tab.0.bottom" timestamp="1679238761559">
+    <state width="1877" height="266" key="GridCell.Tab.0.bottom" timestamp="1679324361464">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="328" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679238761559" />
-    <state width="1877" height="328" key="GridCell.Tab.0.center" timestamp="1679238761558">
+    <state width="1877" height="266" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679324361464" />
+    <state width="1877" height="266" key="GridCell.Tab.0.center" timestamp="1679324361464">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="328" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679238761558" />
-    <state width="1877" height="328" key="GridCell.Tab.0.left" timestamp="1679238761556">
+    <state width="1877" height="266" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679324361464" />
+    <state width="1877" height="266" key="GridCell.Tab.0.left" timestamp="1679324361463">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="328" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679238761556" />
-    <state width="1877" height="328" key="GridCell.Tab.0.right" timestamp="1679238761558">
+    <state width="1877" height="266" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679324361463" />
+    <state width="1877" height="266" key="GridCell.Tab.0.right" timestamp="1679324361464">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="328" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679238761558" />
-    <state width="1877" height="328" key="GridCell.Tab.1.bottom" timestamp="1679238761559">
+    <state width="1877" height="266" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679324361464" />
+    <state width="1877" height="328" key="GridCell.Tab.1.bottom" timestamp="1679323405084">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="328" key="GridCell.Tab.1.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679238761559" />
-    <state width="1877" height="328" key="GridCell.Tab.1.center" timestamp="1679238761559">
+    <state width="1877" height="328" key="GridCell.Tab.1.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679323405084" />
+    <state width="1877" height="328" key="GridCell.Tab.1.center" timestamp="1679323405084">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="328" key="GridCell.Tab.1.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679238761559" />
-    <state width="1877" height="328" key="GridCell.Tab.1.left" timestamp="1679238761559">
+    <state width="1877" height="328" key="GridCell.Tab.1.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679323405084" />
+    <state width="1877" height="328" key="GridCell.Tab.1.left" timestamp="1679323405084">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="328" key="GridCell.Tab.1.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679238761559" />
-    <state width="1877" height="328" key="GridCell.Tab.1.right" timestamp="1679238761559">
+    <state width="1877" height="328" key="GridCell.Tab.1.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679323405084" />
+    <state width="1877" height="328" key="GridCell.Tab.1.right" timestamp="1679323405084">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="328" key="GridCell.Tab.1.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679238761559" />
+    <state width="1877" height="328" key="GridCell.Tab.1.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679323405084" />
     <state width="1293" height="342" key="GridCell.Tab.2.bottom" timestamp="1679134852670">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
