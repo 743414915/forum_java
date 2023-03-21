@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 /**
  * @Description: 商品信息
  * @auther: chong
- * @date: 2023/03/20
+ * @date: 2023/03/21
  */
 public class ProductInfo implements Serializable {
 	/**
