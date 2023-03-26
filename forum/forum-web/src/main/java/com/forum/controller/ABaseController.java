@@ -1,7 +1,7 @@
-package com.easyjava.controller;
+package com.forum.controller;
 
-import com.easyjava.enums.ResponseCodeEnum;
-import com.easyjava.entity.vo.ResponseVO;
+import com.forum.enums.ResponseCodeEnum;
+import com.forum.entity.vo.ResponseVO;
 public class ABaseController {
     protected static final String STATUS_SUCCESS = "success";
     protected static final String STATUS_ERROR = "error";

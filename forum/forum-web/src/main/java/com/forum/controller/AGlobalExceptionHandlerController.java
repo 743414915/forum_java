@@ -1,7 +1,7 @@
-package com.easyjava.controller;
+package com.forum.controller;
 
-import com.easyjava.entity.vo.ResponseVO;
-import com.easyjava.enums.ResponseCodeEnum;
+import com.forum.entity.vo.ResponseVO;
+import com.forum.enums.ResponseCodeEnum;
 import com.easyjava.exception.BusinessException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
