@@ -20,45 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a883bd95-44e4-49df-b57f-3dd3883f35df" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/easyJava-demo/src/main/java/com/easyjava/RunDemoApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava-demo/src/main/resources/logback-spring.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava-demo/src/test/java/MapperTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildMapperXML.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/resources/template/ABaseController.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/resources/template/AGlobalExceptionHandlerController.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/resources/template/BaseQuery.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/resources/template/BusinessException.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/resources/template/PageSize.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/resources/template/PaginationResultVO.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/resources/template/ResponseCodeEnum.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/resources/template/ResponseVO.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/easyJava/src/main/resources/template/SimplePage.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/easyJava-demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/easyJava-demo/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/easyJava-demo/src/main/java/com/easyjava/entity/po/ProductInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/easyJava-demo/src/main/java/com/easyjava/entity/query/ProductInfoQuery.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/easyJava-demo/src/main/java/com/easyjava/enums/DateTimePatternEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/easyJava-demo/src/main/java/com/easyjava/mappers/BaseMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/easyJava-demo/src/main/java/com/easyjava/mappers/ProductInfoMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/easyJava-demo/src/main/java/com/easyjava/utils/DateUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/easyJava-demo/src/main/resources/appliction.properties" beforeDir="false" afterPath="$PROJECT_DIR$/easyJava-demo/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/easyJava-demo/target/classes/META-INF/easyJava-demo.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/easyJava-demo/target/classes/appliction.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/easyJava/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/easyJava/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/RunApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/RunApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/bean/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/bean/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/bean/TableInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/bean/TableInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-web/src/main/java/com/forum/RunApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-web/src/main/java/com/forum/controller/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildController.java" beforeDir="false" afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildService.java" beforeDir="false" afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/easyJava/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/easyJava/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/easyJava/target/classes/META-INF/easyJava.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyJava/src/main/resources/template/AGlobalExceptionHandlerController.txt" beforeDir="false" afterPath="$PROJECT_DIR$/easyJava/src/main/resources/template/AGlobalExceptionHandlerController.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/easyJava/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/easyJava/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forum-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forum-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/forum-web/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/easyJava/target/classes/template/AGlobalExceptionHandlerController.txt" beforeDir="false" afterPath="$PROJECT_DIR$/easyJava/target/classes/template/AGlobalExceptionHandlerController.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-web/src/main/java/com/forum/controller/AGlobalExceptionHandlerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-web/src/main/java/com/forum/controller/AGlobalExceptionHandlerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-web/src/main/java/com/forum/controller/TestController.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +86,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../easyjava" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/forum-web/src/main/java/com/forum/controller" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -131,8 +103,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\java1\java3\forum\forum_java\forum\forum-admin\src\main\resources" />
+      <recent name="E:\java1\java3\forum\forum_java\forum\forum-web\src\main\java\com\forum\controller" />
+      <recent name="E:\java1\java3\forum\forum_java\forum\forum-common\src\main\java\com\forum" />
+      <recent name="E:\java1\java3\forum\forum_java\forum\forum-common\src\main\resources" />
       <recent name="E:\java1\java3\forum\forum_java\forum\forum-common\src\main" />
+      <recent name="E:\java1\java3\forum\forum_java\forum\forum-common\src\main\java" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="common.easyjava.builder" />
@@ -140,6 +115,7 @@
       <recent name="com.forum" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\java1\java3\forum\forum_java\forum\forum-common\src\main" />
       <recent name="E:\java1\java3\forum\forum_java\forum\forum-admin\src\main\resources" />
     </key>
   </component>
@@ -150,7 +126,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.RunDemoApplication">
+  <component name="RunManager" selected="Spring Boot.RunApplication (1)">
     <configuration name="RunApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="common.easyjava.RunApplication" />
       <module name="easyJava" />
@@ -160,16 +136,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MapperTest.deleteByKey" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="easyJava-demo" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MapperTest" />
-      <option name="METHOD_NAME" value="deleteByKey" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -194,6 +160,19 @@
     <configuration name="ForumWebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="forum-web" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.forum.ForumWebApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RunApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="forum-web" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.forum.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.forum.RunApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -229,17 +208,17 @@
       <item itemvalue="Spring Boot.ForumAdminApplication" />
       <item itemvalue="Spring Boot.ForumWebApplication" />
       <item itemvalue="JUnit.MapperTest.updateByKey" />
-      <item itemvalue="JUnit.MapperTest.deleteByKey" />
       <item itemvalue="Spring Boot.RunApplication" />
       <item itemvalue="Spring Boot.RunDemoApplication" />
+      <item itemvalue="Spring Boot.RunApplication (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.RunDemoApplication" />
+        <item itemvalue="Spring Boot.RunApplication (1)" />
         <item itemvalue="Application.RunApplication" />
+        <item itemvalue="Spring Boot.RunDemoApplication" />
         <item itemvalue="JUnit.MapperTest.updateByKey" />
         <item itemvalue="Spring Boot.RunApplication" />
-        <item itemvalue="JUnit.MapperTest.deleteByKey" />
       </list>
     </recent_temporary>
   </component>
@@ -277,7 +256,7 @@
       <workItem from="1679717666081" duration="341000" />
       <workItem from="1679718029987" duration="4780000" />
       <workItem from="1679731877454" duration="16133000" />
-      <workItem from="1679795823129" duration="24304000" />
+      <workItem from="1679795823129" duration="27174000" />
     </task>
     <servers />
   </component>
@@ -313,6 +292,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="548" y="436" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679199052248" />
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1679840982934">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679840982934" />
     <state x="675" y="339" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1679200552343">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -321,54 +304,54 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679732569425" />
-    <state width="1293" height="279" key="GridCell.Tab.0.bottom" timestamp="1679829717366">
+    <state width="1293" height="365" key="GridCell.Tab.0.bottom" timestamp="1679842609546">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="279" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679829717366" />
-    <state width="1293" height="279" key="GridCell.Tab.0.center" timestamp="1679829717365">
+    <state width="1293" height="365" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679842609546" />
+    <state width="1293" height="365" key="GridCell.Tab.0.center" timestamp="1679842609545">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="279" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679829717365" />
-    <state width="1293" height="279" key="GridCell.Tab.0.left" timestamp="1679829717362">
+    <state width="1293" height="365" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679842609545" />
+    <state width="1293" height="365" key="GridCell.Tab.0.left" timestamp="1679842609545">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="279" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679829717362" />
-    <state width="1293" height="279" key="GridCell.Tab.0.right" timestamp="1679829717366">
+    <state width="1293" height="365" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679842609545" />
+    <state width="1293" height="365" key="GridCell.Tab.0.right" timestamp="1679842609545">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="279" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679829717366" />
-    <state width="1293" height="279" key="GridCell.Tab.1.bottom" timestamp="1679829717369">
+    <state width="1293" height="365" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679842609545" />
+    <state width="1293" height="365" key="GridCell.Tab.1.bottom" timestamp="1679842609546">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="279" key="GridCell.Tab.1.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679829717369" />
-    <state width="1293" height="279" key="GridCell.Tab.1.center" timestamp="1679829717368">
+    <state width="1293" height="365" key="GridCell.Tab.1.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679842609546" />
+    <state width="1293" height="365" key="GridCell.Tab.1.center" timestamp="1679842609546">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="279" key="GridCell.Tab.1.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679829717368" />
-    <state width="1293" height="279" key="GridCell.Tab.1.left" timestamp="1679829717367">
+    <state width="1293" height="365" key="GridCell.Tab.1.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679842609546" />
+    <state width="1293" height="365" key="GridCell.Tab.1.left" timestamp="1679842609546">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="279" key="GridCell.Tab.1.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679829717367" />
-    <state width="1293" height="279" key="GridCell.Tab.1.right" timestamp="1679829717368">
+    <state width="1293" height="365" key="GridCell.Tab.1.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679842609546" />
+    <state width="1293" height="365" key="GridCell.Tab.1.right" timestamp="1679842609546">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="279" key="GridCell.Tab.1.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679829717368" />
-    <state width="1293" height="279" key="GridCell.Tab.2.bottom" timestamp="1679829717371">
+    <state width="1293" height="365" key="GridCell.Tab.1.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679842609546" />
+    <state width="1293" height="365" key="GridCell.Tab.2.bottom" timestamp="1679842609546">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="279" key="GridCell.Tab.2.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679829717371" />
-    <state width="1293" height="279" key="GridCell.Tab.2.center" timestamp="1679829717370">
+    <state width="1293" height="365" key="GridCell.Tab.2.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679842609546" />
+    <state width="1293" height="365" key="GridCell.Tab.2.center" timestamp="1679842609546">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="279" key="GridCell.Tab.2.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679829717370" />
-    <state width="1293" height="279" key="GridCell.Tab.2.left" timestamp="1679829717369">
+    <state width="1293" height="365" key="GridCell.Tab.2.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679842609546" />
+    <state width="1293" height="365" key="GridCell.Tab.2.left" timestamp="1679842609546">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="279" key="GridCell.Tab.2.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679829717369" />
-    <state width="1293" height="279" key="GridCell.Tab.2.right" timestamp="1679829717371">
+    <state width="1293" height="365" key="GridCell.Tab.2.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679842609546" />
+    <state width="1293" height="365" key="GridCell.Tab.2.right" timestamp="1679842609546">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="279" key="GridCell.Tab.2.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679829717371" />
+    <state width="1293" height="365" key="GridCell.Tab.2.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679842609546" />
     <state width="220" height="539" key="HiddenNamespacesPopup" timestamp="1679497050100">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -403,6 +386,7 @@
       <configuration name="SpringBootApplicationConfigurationType">
         <watch expression="query" />
         <watch expression="page" />
+        <watch expression="e" />
       </configuration>
       <configuration name="Application">
         <watch expression="headerInfoList" />
