@@ -26,6 +26,57 @@ public class BuildBase {
         headerInfoList.clear();
         headerInfoList.add("package " + Constants.PACKAGE_MAPPERS);
         build(headerInfoList, "BaseMapper", Constants.PATH_MAPPERS);
+
+        // 生成pageSize枚举
+        headerInfoList.clear();
+        headerInfoList.add("package " + Constants.PACKAGE_ENUMS);
+        build(headerInfoList, "PageSize", Constants.PATH_ENUMS);
+
+        // 生成SimplePage
+        headerInfoList.clear();
+        headerInfoList.add("package " + Constants.PACKAGE_QUERY);
+        headerInfoList.add("import " + Constants.PACKAGE_ENUMS + ".PageSize");
+        build(headerInfoList, "SimplePage", Constants.PATH_QUERY);
+
+        // 生成BaseQuery
+        headerInfoList.clear();
+        headerInfoList.add("package " + Constants.PACKAGE_QUERY);
+        build(headerInfoList, "BaseQuery", Constants.PATH_QUERY);
+
+        // 生成PaginationResultVO
+        headerInfoList.clear();
+        headerInfoList.add("package " + Constants.PACKAGE_VO);
+        build(headerInfoList, "PaginationResultVO", Constants.PATH_VO);
+
+        // 生成BusinessException
+        headerInfoList.clear();
+        headerInfoList.add("package " + Constants.PACKAGE_EXCEPTION);
+        headerInfoList.add("import " + Constants.PACKAGE_ENUMS + ".ResponseCodeEnum");
+        build(headerInfoList, "BusinessException", Constants.PATH_EXCEPTION);
+
+        // 生成ResponseCodeEnum枚举
+        headerInfoList.clear();
+        headerInfoList.add("package " + Constants.PACKAGE_ENUMS);
+        build(headerInfoList, "ResponseCodeEnum", Constants.PATH_ENUMS);
+
+        // 生成ABaseController
+        headerInfoList.clear();
+        headerInfoList.add("package " + Constants.PACKAGE_CONTROLLER);
+        headerInfoList.add("import " + Constants.PACKAGE_ENUMS + ".ResponseCodeEnum");
+        headerInfoList.add("import " + Constants.PACKAGE_VO + ".ResponseVO");
+        build(headerInfoList, "ABaseController", Constants.PATH_CONTROLLER);
+
+        // 生成ResponseVO
+        headerInfoList.clear();
+        headerInfoList.add("package " + Constants.PACKAGE_VO);
+        build(headerInfoList, "ResponseVO", Constants.PATH_VO);
+
+        // 生成AGlobalExceptionHandlerController
+        headerInfoList.clear();
+        headerInfoList.add("package " + Constants.PACKAGE_CONTROLLER);
+        headerInfoList.add("import " + Constants.PACKAGE_VO + ".ResponseVO");
+        headerInfoList.add("import " + Constants.PACKAGE_ENUMS + ".ResponseCodeEnum");
+        build(headerInfoList, "AGlobalExceptionHandlerController", Constants.PATH_CONTROLLER);
     }
 
     public static void build(List<String> headerInfoList, String fileName, String outPutPath) {

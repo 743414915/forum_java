@@ -3,7 +3,6 @@ package common.easyjava;
 import common.easyjava.bean.TableInfo;
 import common.easyjava.builder.*;
 
-import common.easyjava.utils.JsonUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,6 +19,12 @@ public class RunApplication {
             BuildPo.execute(tableInfo);
             BuildQuery.execute(tableInfo);
             BuildMapper.execute(tableInfo);
+            BuildMapperXML.execute(tableInfo);
+            BuildService.execute(tableInfo);
+            BuildServiceImpl.execute(tableInfo);
+            BuildController.execute(tableInfo);
         }
+
+        System.out.println("生成完成！！！！！！！！！！！！！！！！！！！！");
     }
 }

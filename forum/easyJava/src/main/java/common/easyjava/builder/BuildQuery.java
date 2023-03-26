@@ -51,10 +51,9 @@ public class BuildQuery {
 
             // 构建类注释
             BuildComment.createClassComment(bw, tableInfo.getComment() + " 查询对象");
-            bw.write("public class " + className + " {");
+            bw.write("public class " + className + " extends BaseQuery {");
             bw.newLine();
 
-            List<FieldInfo> extendList = new ArrayList<>();
             for (FieldInfo field : tableInfo.getFieldList()) {
                 BuildComment.createFieldComment(bw, field.getComment());
 
@@ -68,11 +67,6 @@ public class BuildQuery {
                     bw.write("\tprivate " + field.getJavaType() + " " + propertyName + ";");
                     bw.newLine();
                     bw.newLine();
-
-                    FieldInfo fuzzyField = new FieldInfo();
-                    fuzzyField.setJavaType(field.getJavaType());
-                    fuzzyField.setPropertyName(propertyName);
-                    extendList.add(fuzzyField);
                 }
                 if (ArrayUtils.contains(Constants.SQL_DATE_TIME_TYPES, field.getSqlType()) || ArrayUtils.contains(Constants.SQL_DATE_TYPES, field.getSqlType())) {
                     bw.write("\tprivate String " + field.getPropertyName() + Constants.SUFFIX_BEAN_QUERY_TIME_START + ";");
@@ -82,43 +76,11 @@ public class BuildQuery {
                     bw.write("\tprivate String " + field.getPropertyName() + Constants.SUFFIX_BEAN_QUERY_TIME_END + ";");
                     bw.newLine();
                     bw.newLine();
-
-                    FieldInfo timeStartField = new FieldInfo();
-                    timeStartField.setJavaType("String");
-                    timeStartField.setPropertyName(field.getPropertyName() + Constants.SUFFIX_BEAN_QUERY_TIME_START);
-                    extendList.add(timeStartField);
-
-                    FieldInfo timeEndField = new FieldInfo();
-                    timeEndField.setJavaType("String");
-                    timeEndField.setPropertyName(field.getPropertyName() + Constants.SUFFIX_BEAN_QUERY_TIME_END);
-                    extendList.add(timeEndField);
                 }
             }
 
-            List<FieldInfo> fieldInfoList = tableInfo.getFieldList();
-            fieldInfoList.addAll(extendList);
-
-            for (FieldInfo field : fieldInfoList) {
-                String tempField = StringUtils.uperCaseFirstLetter(field.getPropertyName());
-                // set
-                bw.write("\tpublic void set" + tempField + "(" + field.getJavaType() + " " + field.getPropertyName() + ") {");
-                bw.newLine();
-                bw.write("\t\tthis." + field.getPropertyName() + " = " + field.getPropertyName() + ";");
-                bw.newLine();
-                bw.write("\t}");
-                bw.newLine();
-                bw.newLine();
-
-                //get
-                bw.write("\tpublic " + field.getJavaType() + " get" + tempField + "() {");
-                bw.newLine();
-                bw.write("\t\treturn this." + field.getPropertyName() + ";");
-                bw.newLine();
-                bw.write("\t}");
-                bw.newLine();
-                bw.newLine();
-
-            }
+            buildGetSet(tableInfo.getFieldList(), bw);
+            buildGetSet(tableInfo.getFieldExtendList(), bw);
 
             bw.write("}");
             bw.flush();
@@ -146,6 +108,30 @@ public class BuildQuery {
                     e.printStackTrace();
                 }
             }
+        }
+    }
+
+    private static void buildGetSet(List<FieldInfo> fieldInfoList, BufferedWriter bw) throws IOException {
+        for (FieldInfo field : fieldInfoList) {
+            String tempField = StringUtils.uperCaseFirstLetter(field.getPropertyName());
+            // set
+            bw.write("\tpublic void set" + tempField + "(" + field.getJavaType() + " " + field.getPropertyName() + ") {");
+            bw.newLine();
+            bw.write("\t\tthis." + field.getPropertyName() + " = " + field.getPropertyName() + ";");
+            bw.newLine();
+            bw.write("\t}");
+            bw.newLine();
+            bw.newLine();
+
+            //get
+            bw.write("\tpublic " + field.getJavaType() + " get" + tempField + "() {");
+            bw.newLine();
+            bw.write("\t\treturn this." + field.getPropertyName() + ";");
+            bw.newLine();
+            bw.write("\t}");
+            bw.newLine();
+            bw.newLine();
+
         }
     }
 }
