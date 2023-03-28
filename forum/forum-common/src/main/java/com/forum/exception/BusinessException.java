@@ -1,6 +1,7 @@
 package com.forum.exception;
 
 import com.forum.enums.ResponseCodeEnum;
+
 public class BusinessException extends Exception {
     private ResponseCodeEnum codeEnum;
     private Integer code;

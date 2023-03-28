@@ -799,7 +799,7 @@
       <Position>2</Position>
       <Comment>公司ID</Comment>
       <DataType>varchar(30)|0s</DataType>
-      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="250" parent="247" name="code">
@@ -879,8 +879,7 @@ color_type</ColNames>
     </index>
     <key id="263" parent="247" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>id
-company_id</ColNames>
+      <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
     <key id="264" parent="247" name="idx_code">
