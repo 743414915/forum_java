@@ -1,11 +1,13 @@
 package com.forum.controller;
 
 import com.forum.constants.Constants;
+import com.forum.controller.base.ABaseController;
 import com.forum.entity.dto.CreateImageCode;
 import com.forum.entity.vo.ResponseVO;
 import com.forum.enums.ResponseCodeEnum;
 import com.forum.exception.BusinessException;
 import com.forum.service.EmailCodeService;
+import com.forum.service.UserInfoService;
 import com.forum.utils.StringTools;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,8 +24,11 @@ public class AccountController extends ABaseController {
     @Resource
     private EmailCodeService emailCodeService;
 
+    @Resource
+    private UserInfoService userInfoService;
+
     /**
-     * 验证码
+     * 获取验证码
      *
      * @param response response
      * @param session  session
@@ -50,7 +55,7 @@ public class AccountController extends ABaseController {
     }
 
     /**
-     * 邮箱验证码
+     * 发送邮箱验证码
      *
      * @param session   session
      * @param email     邮箱
@@ -59,14 +64,17 @@ public class AccountController extends ABaseController {
      * @return ResponseVO
      */
     @RequestMapping("/sendEmailCode")
-    public ResponseVO sendEmailCode(HttpSession session, String email, String checkCode, Integer type) {
-//        if (StringTools.isEmpty(email) || StringTools.isEmpty(checkCode) || type == null || session.getAttribute(Constants.CHECK_CODE_KEY) != null) {
-//            try {
-//                throw new BusinessException(ResponseCodeEnum.CODE_600);
-//            } catch (BusinessException e) {
-//                e.printStackTrace();
-//            }
-//        }
+    public ResponseVO sendEmailCode(HttpSession session, String email, String checkCode, Integer type) throws BusinessException {
+        try {
+            if (StringTools.isEmpty(email) || StringTools.isEmpty(checkCode) || type == null) {
+                throw new BusinessException(ResponseCodeEnum.CODE_600);
+            }
+            if (!checkCode.equalsIgnoreCase((String) session.getAttribute(Constants.CHECK_CODE_KEY_EMAIL))) {
+                throw new BusinessException("图片验证码错误");
+            }
+        } finally {
+            session.removeAttribute(Constants.CHECK_CODE_KEY_EMAIL);
+        }
 
         try {
             emailCodeService.SendEmailCode(email, type);
@@ -85,16 +93,18 @@ public class AccountController extends ABaseController {
      * @throws BusinessException
      */
     @RequestMapping("/register")
-    public ResponseVO register(HttpSession session, String checkCode) throws BusinessException {
-        if (checkCode == null || "".equalsIgnoreCase(checkCode) || session.getAttribute(Constants.CHECK_CODE_KEY) != null) {
-            throw new BusinessException(ResponseCodeEnum.CODE_600);
-        }
-        session.getAttribute(Constants.CHECK_CODE_KEY).equals(checkCode);
-        String sessionCode = (String) session.getAttribute(Constants.CHECK_CODE_KEY);
-        if (sessionCode.equalsIgnoreCase(checkCode)) {
-            return getSuccessResponseVO("验证成功");
-        } else {
-            throw new BusinessException("验证失败");
+    public ResponseVO register(HttpSession session, String email, String emailCode, String nickName, String password, String checkCode) throws BusinessException {
+        try {
+            if (StringTools.isEmpty(checkCode) || StringTools.isEmpty(email) || StringTools.isEmpty(emailCode) || StringTools.isEmpty(nickName) || StringTools.isEmpty(password)) {
+                throw new BusinessException(ResponseCodeEnum.CODE_600);
+            }
+            if (!checkCode.equalsIgnoreCase((String) session.getAttribute(Constants.CHECK_CODE_KEY))) {
+                throw new BusinessException("图片验证码错误");
+            }
+            userInfoService.register(email, emailCode, nickName, password, checkCode);
+            return getSuccessResponseVO(null);
+        } finally {
+            session.removeAttribute(Constants.CHECK_CODE_KEY);
         }
     }
 }

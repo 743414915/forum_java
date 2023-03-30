@@ -1,4 +1,4 @@
-package com.forum.controller;
+package com.forum.controller.base;
 
 import com.forum.enums.ResponseCodeEnum;
 import com.forum.entity.vo.ResponseVO;

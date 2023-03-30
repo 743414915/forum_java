@@ -83,7 +83,7 @@
 
 	<!--插入（匹配有值的字段）-->
 	<insert id="insert" parameterType="com.forum.entity.po.UserIntegralRecord">
-		<selectKey keyProperty="bean.recordId" resultType="Integer" order="AFTER">
+		<selectKey keyProperty="bean.record_id" resultType="Integer" order="AFTER">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 		INSERT INTO user_integral_record

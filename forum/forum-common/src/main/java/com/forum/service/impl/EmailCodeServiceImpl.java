@@ -137,7 +137,7 @@ public class EmailCodeServiceImpl implements EmailCodeService {
             }
         }
         String code = StringTools.getRandomString(Constants.LENGTH_5);
-        //SendEmailCodeDo(email, code);
+        SendEmailCodeDo(email, code);
         emailCodeMapper.disableEmailCode(email);
 
         EmailCode emailCode = new EmailCode();
@@ -169,5 +169,28 @@ public class EmailCodeServiceImpl implements EmailCodeService {
                 businessException.printStackTrace();
             }
         }
+    }
+
+    @Override
+    public void checkCode(String email, String emailCode) throws BusinessException {
+        EmailCode dbInfo = this.emailCodeMapper.selectByEmailAndCode(email, emailCode);
+//        if (null != dbInfo) {
+//            if (dbInfo.getStatus() == 0 && System.currentTimeMillis() - dbInfo.getCreateTime().getTime() <= 1000 * 60 + Constants.LENGTH_15) {
+//            } else {
+//                throw new BusinessException("验证码已失效");
+//            }
+//        } else {
+//            throw new BusinessException("邮箱验证码不正确");
+//        }
+
+        // 优化
+        if (null == dbInfo) {
+            throw new BusinessException("邮箱验证码不正确");
+        }
+        if (dbInfo.getStatus() != 0 && System.currentTimeMillis() - dbInfo.getCreateTime().getTime() > 1000 * 60 + Constants.LENGTH_15) {
+            throw new BusinessException("验证码已失效");
+        }
+
+        emailCodeMapper.disableEmailCode(email);
     }
 }

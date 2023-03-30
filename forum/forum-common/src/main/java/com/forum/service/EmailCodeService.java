@@ -67,4 +67,6 @@ public interface EmailCodeService {
      * @param type  验证码类型 0是注册
      */
     void SendEmailCode(String email, Integer type) throws BusinessException;
+
+    void checkCode(String email, String emailCode) throws BusinessException;
 }
