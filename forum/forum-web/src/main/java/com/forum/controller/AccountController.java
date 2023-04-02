@@ -1,10 +1,13 @@
 package com.forum.controller;
 
+import com.forum.annotation.GlobalInterceptor;
+import com.forum.annotation.VerifyParam;
 import com.forum.constants.Constants;
 import com.forum.controller.base.ABaseController;
 import com.forum.entity.dto.CreateImageCode;
 import com.forum.entity.vo.ResponseVO;
 import com.forum.enums.ResponseCodeEnum;
+import com.forum.enums.VerifyRegexEnum;
 import com.forum.exception.BusinessException;
 import com.forum.service.EmailCodeService;
 import com.forum.service.UserInfoService;
@@ -64,11 +67,12 @@ public class AccountController extends ABaseController {
      * @return ResponseVO
      */
     @RequestMapping("/sendEmailCode")
-    public ResponseVO sendEmailCode(HttpSession session, String email, String checkCode, Integer type) throws BusinessException {
+    @GlobalInterceptor(checkParams = true)
+    public ResponseVO sendEmailCode(HttpSession session,
+                                    @VerifyParam(required = true, regex = VerifyRegexEnum.EMAIL, max = 150) String email,
+                                    @VerifyParam(required = true) String checkCode,
+                                    @VerifyParam(required = true) Integer type) throws BusinessException {
         try {
-            if (StringTools.isEmpty(email) || StringTools.isEmpty(checkCode) || type == null) {
-                throw new BusinessException(ResponseCodeEnum.CODE_600);
-            }
             if (!checkCode.equalsIgnoreCase((String) session.getAttribute(Constants.CHECK_CODE_KEY_EMAIL))) {
                 throw new BusinessException("图片验证码错误");
             }
@@ -93,15 +97,43 @@ public class AccountController extends ABaseController {
      * @throws BusinessException
      */
     @RequestMapping("/register")
-    public ResponseVO register(HttpSession session, String email, String emailCode, String nickName, String password, String checkCode) throws BusinessException {
+    @GlobalInterceptor(checkParams = true)
+    public ResponseVO register(HttpSession session,
+                               @VerifyParam(required = true, regex = VerifyRegexEnum.EMAIL, max = 150) String email,
+                               @VerifyParam(required = true) String emailCode,
+                               @VerifyParam(required = true) String nickName,
+                               @VerifyParam(required = true, regex = VerifyRegexEnum.PASSWORD, max = 18, min = 8) String password,
+                               @VerifyParam(required = true) String checkCode) throws BusinessException {
         try {
-            if (StringTools.isEmpty(checkCode) || StringTools.isEmpty(email) || StringTools.isEmpty(emailCode) || StringTools.isEmpty(nickName) || StringTools.isEmpty(password)) {
-                throw new BusinessException(ResponseCodeEnum.CODE_600);
-            }
             if (!checkCode.equalsIgnoreCase((String) session.getAttribute(Constants.CHECK_CODE_KEY))) {
                 throw new BusinessException("图片验证码错误");
             }
             userInfoService.register(email, emailCode, nickName, password, checkCode);
+            return getSuccessResponseVO(null);
+        } finally {
+            session.removeAttribute(Constants.CHECK_CODE_KEY);
+        }
+    }
+
+    /**
+     * 登录
+     * @param session
+     * @param email
+     * @param password
+     * @param checkCode
+     * @return ResponseVO
+     * @throws BusinessException
+     */
+    @RequestMapping("/register")
+    @GlobalInterceptor(checkParams = true)
+    public ResponseVO login(HttpSession session,
+                               @VerifyParam(required = true) String email,
+                               @VerifyParam(required = true) String password,
+                               @VerifyParam(required = true) String checkCode) throws BusinessException {
+        try {
+            if (!checkCode.equalsIgnoreCase((String) session.getAttribute(Constants.CHECK_CODE_KEY))) {
+                throw new BusinessException("图片验证码错误");
+            }
             return getSuccessResponseVO(null);
         } finally {
             session.removeAttribute(Constants.CHECK_CODE_KEY);
