@@ -1,6 +1,8 @@
 package com.forum.service.impl;
 
 import com.forum.constants.Constants;
+import com.forum.entity.config.WebConfig;
+import com.forum.entity.dto.SessionWebUserDto;
 import com.forum.entity.po.UserInfo;
 import com.forum.entity.po.UserIntegralRecord;
 import com.forum.entity.po.UserMessage;
@@ -16,14 +18,21 @@ import com.forum.mappers.UserIntegralRecordMapper;
 import com.forum.mappers.UserMessageMapper;
 import com.forum.service.EmailCodeService;
 import com.forum.service.UserInfoService;
+import com.forum.utils.JsonUtils;
+import com.forum.utils.OKHttpUtils;
 import com.forum.utils.StringTools;
 import com.forum.utils.SysCacheUtils;
+import org.apache.commons.lang3.ArrayUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 ;
 
@@ -34,6 +43,8 @@ import java.util.List;
  */
 @Service("userInfoService")
 public class UserInfoServiceImpl implements UserInfoService {
+
+    private static final Logger logger = LoggerFactory.getLogger(UserInfoServiceImpl.class);
 
     @Resource
     private UserInfoMapper<UserInfo, UserInfoQuery> userInfoMapper;
@@ -46,6 +57,9 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Resource
     private UserIntegralRecordMapper<UserIntegralRecord, UserIntegralRecordQuery> userIntegralRecordMapper;
+
+    @Resource
+    private WebConfig webConfig;
 
     /**
      * 根据条件查询列表
@@ -231,5 +245,68 @@ public class UserInfoServiceImpl implements UserInfoService {
         if (count == 0) {
             throw new BusinessException("更新用户积分失败");
         }
+    }
+
+    @Override
+    public SessionWebUserDto login(String email, String password, String ip) throws BusinessException {
+        UserInfo userInfo = this.userInfoMapper.selectByEmail(email);
+
+        if (null == userInfo || !userInfo.getPassword().equals(password)) {
+            throw new BusinessException("账号或者密码错误");
+        }
+        if (UserStatusEnum.DISABLE.getStatus().equals(userInfo.getStatus())) {
+            throw new BusinessException("账号被禁用");
+        }
+        String ipAddress = getIpAddress(ip);
+        UserInfo updateInfo = new UserInfo();
+        updateInfo.setLastLoginTime(new Date());
+        updateInfo.setLastLoginIp(ip);
+        updateInfo.setLastLoginIpAddress(ipAddress);
+
+        this.userInfoMapper.updateByUserId(updateInfo, userInfo.getUserId());
+        SessionWebUserDto sessionWebUserDto = new SessionWebUserDto();
+        sessionWebUserDto.setNickName(userInfo.getNickName());
+        sessionWebUserDto.setProvince(ipAddress);
+        sessionWebUserDto.setUserId(userInfo.getUserId());
+
+        if (!StringTools.isEmpty(webConfig.getAdminEmail()) && ArrayUtils.contains(webConfig.getAdminEmail().split(","), userInfo.getEmail())) {
+            sessionWebUserDto.setAdmin(true);
+        } else {
+            sessionWebUserDto.setAdmin(false);
+        }
+        return sessionWebUserDto;
+    }
+
+    public String getIpAddress(String ip) {
+        try {
+            String url = "http://whois.pconline.com.cn/ipJson.jsp?json=true&ip=" + ip;
+            String responseJson = OKHttpUtils.getRequest(url);
+            if (null == responseJson) {
+                return Constants.NO_ADDRESS;
+            }
+            Map<String, String> addressInfo = JsonUtils.convertJson2Obj(responseJson, Map.class);
+
+            // 省份信息
+            return addressInfo.get("pro");
+        } catch (Exception e) {
+            logger.error("获取IP地址失败", e);
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
+        return Constants.NO_ADDRESS;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void resetPwd(String email, String password, String emailCode) throws BusinessException {
+        UserInfo userInfo = this.userInfoMapper.selectByEmail(email);
+        if (null == userInfo) {
+            throw new BusinessException("邮箱不存在");
+        }
+        emailCodeService.checkCode(email, emailCode);
+
+        UserInfo updateInfo = new UserInfo();
+        updateInfo.setPassword(StringTools.encodeMd5(password));
+        this.userInfoMapper.updateByEmail(updateInfo, email);
     }
 }

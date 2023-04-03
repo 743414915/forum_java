@@ -1,6 +1,7 @@
 package com.forum.service;
 
 
+import com.forum.entity.dto.SessionWebUserDto;
 import com.forum.entity.po.UserInfo;
 import com.forum.entity.query.UserInfoQuery;
 import com.forum.entity.vo.PaginationResultVO;
@@ -92,4 +93,7 @@ public interface UserInfoService {
 
     void register(String email, String emailCode, String nickName, String password, String checkCode) throws BusinessException;
 
+    SessionWebUserDto login(String email, String password, String ip) throws BusinessException;
+
+    void resetPwd(String email, String password, String emailCode) throws BusinessException;
 }

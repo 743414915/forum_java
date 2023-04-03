@@ -133,7 +133,7 @@ public class EmailCodeServiceImpl implements EmailCodeService {
         if (Constants.ZERO.equals(type)) {
             UserInfo userInfo = userInfoMapper.selectByEmail(email);
             if (userInfo != null) {
-                throw new BusinessException("邮箱已存在");
+                throw new BusinessException("邮箱已经存在");
             }
         }
         String code = StringTools.getRandomString(Constants.LENGTH_5);

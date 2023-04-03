@@ -57,7 +57,7 @@ public class OperactionAspect {
             return pointResult;
         } catch (BusinessException e) {
             logger.error("全局拦截器异常");
-            throw new BusinessException(ResponseCodeEnum.CODE_600);
+            throw e;
         } catch (Exception e) {
             logger.error("全局拦截器异常");
             throw new BusinessException(ResponseCodeEnum.CODE_500);
@@ -108,7 +108,7 @@ public class OperactionAspect {
         }
 
         // 校验正则
-        if (!isEmpty && StringTools.isEmpty(verifyParam.regex().getRegex()) && !VeriftyUtils.verfity(verifyParam.regex(), String.valueOf(value))) {
+        if (!isEmpty && !StringTools.isEmpty(verifyParam.regex().getRegex()) && !VeriftyUtils.verfity(verifyParam.regex(), String.valueOf(value))) {
             throw new BusinessException(ResponseCodeEnum.CODE_600);
         }
     }
