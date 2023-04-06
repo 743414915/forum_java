@@ -1,6 +1,7 @@
 package com.forum.entity.po;
 
 import java.io.Serializable;
+import java.util.List;
 
 
 /**
@@ -43,6 +44,8 @@ public class ForumBoard implements Serializable {
 	 * 0:只允许管理员发帖 1:任何人可以发帖
  	 */
 	private Integer postType;
+
+	private List<ForumBoard> children;
 
 	public void setBoardId(Integer boardId) {
 		this.boardId = boardId;
@@ -98,6 +101,14 @@ public class ForumBoard implements Serializable {
 
 	public Integer getPostType() {
 		return this.postType;
+	}
+
+	public List<ForumBoard> getChildren() {
+		return children;
+	}
+
+	public void setChildren(List<ForumBoard> children) {
+		this.children = children;
 	}
 
 	@Override

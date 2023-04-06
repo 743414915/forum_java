@@ -32,7 +32,7 @@ public class OperactionAspect {
     }
 
     @Around("requestInterceptor()")
-    public Object interceptorDo(ProceedingJoinPoint point) throws Throwable {
+    public Object interceptorDo(ProceedingJoinPoint point) throws BusinessException {
         try {
             Object target = point.getTarget();
             Object[] arguments = point.getArgs();
@@ -57,7 +57,7 @@ public class OperactionAspect {
             return pointResult;
         } catch (BusinessException e) {
             logger.error("全局拦截器异常");
-            throw e;
+            throw new BusinessException(e.getMessage());
         } catch (Exception e) {
             logger.error("全局拦截器异常");
             throw new BusinessException(ResponseCodeEnum.CODE_500);
@@ -67,7 +67,8 @@ public class OperactionAspect {
         }
     }
 
-    private void validateParams(Method method, Object[] arguments) {
+
+    private void validateParams(Method method, Object[] arguments) throws BusinessException {
         Parameter[] parameters = method.getParameters();
 
         for (int i = 0; i < parameters.length; i++) {
@@ -79,11 +80,7 @@ public class OperactionAspect {
                 continue;
             }
             if (ArrayUtils.contains(TYPE_BASE, parameter.getParameterizedType().getTypeName())) {
-                try {
-                    checkValue(value, verifyParam);
-                } catch (BusinessException e) {
-                    e.printStackTrace();
-                }
+                checkValue(value, verifyParam);
             } else {
 
             }

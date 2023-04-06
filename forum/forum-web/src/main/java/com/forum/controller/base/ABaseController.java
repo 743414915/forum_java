@@ -2,9 +2,11 @@ package com.forum.controller.base;
 
 import com.forum.constants.Constants;
 import com.forum.entity.dto.SessionWebUserDto;
+import com.forum.entity.vo.PaginationResultVO;
 import com.forum.enums.ResponseCodeEnum;
 import com.forum.entity.vo.ResponseVO;
 import com.forum.exception.BusinessException;
+import com.forum.utils.CopyTools;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -77,5 +79,15 @@ public class ABaseController {
     protected SessionWebUserDto getUserInfoFromSession(HttpSession session) {
         SessionWebUserDto sessionWebUserDto = (SessionWebUserDto) session.getAttribute(Constants.SESSION_KEY);
         return sessionWebUserDto;
+    }
+
+    protected <S, T> PaginationResultVO<T> convert2PaginationVO(PaginationResultVO<S> result, Class<T> classz) {
+        PaginationResultVO<T> resultVO = new PaginationResultVO<>();
+        resultVO.setList(CopyTools.copyList(result.getList(), classz));
+        resultVO.setPageNo(result.getPageNo());
+        resultVO.setPageSize(result.getPageSize());
+        resultVO.setPageTotal(result.getPageTotal());
+        resultVO.setTotalCount(result.getTotalCount());
+        return resultVO;
     }
 }

@@ -25,6 +25,7 @@ public class SimplePage {
         this.pageNo = pageNo;
         this.countTotal = countTotal;
         this.pageSize = pageSize;
+        action();
     }
 
     public SimplePage(Integer start, Integer end) {

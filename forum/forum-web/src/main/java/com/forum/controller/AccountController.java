@@ -8,14 +8,11 @@ import com.forum.entity.dto.CreateImageCode;
 import com.forum.entity.dto.SessionWebUserDto;
 import com.forum.entity.dto.SysSetting4CommentDto;
 import com.forum.entity.dto.SysSettingDto;
-import com.forum.entity.po.SysSetting;
 import com.forum.entity.vo.ResponseVO;
-import com.forum.enums.ResponseCodeEnum;
 import com.forum.enums.VerifyRegexEnum;
 import com.forum.exception.BusinessException;
 import com.forum.service.EmailCodeService;
 import com.forum.service.UserInfoService;
-import com.forum.utils.StringTools;
 import com.forum.utils.SysCacheUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -88,11 +85,7 @@ public class AccountController extends ABaseController {
             session.removeAttribute(Constants.CHECK_CODE_KEY_EMAIL);
         }
 
-        try {
-            emailCodeService.SendEmailCode(email, type);
-        } catch (BusinessException e) {
-            e.printStackTrace();
-        }
+        emailCodeService.SendEmailCode(email, type);
         return getSuccessResponseVO(null);
     }
 
@@ -205,7 +198,7 @@ public class AccountController extends ABaseController {
                 throw new BusinessException("图片验证码错误");
             }
 
-            userInfoService.resetPwd(email, password, checkCode);
+            userInfoService.resetPwd(email, password, emailCode);
             return getSuccessResponseVO(null);
         } finally {
             session.removeAttribute(Constants.CHECK_CODE_KEY);
