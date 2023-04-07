@@ -2,22 +2,28 @@ package com.forum.aspect;
 
 import com.forum.annotation.GlobalInterceptor;
 import com.forum.annotation.VerifyParam;
+import com.forum.constants.Constants;
+import com.forum.entity.dto.SessionWebUserDto;
 import com.forum.enums.ResponseCodeEnum;
 import com.forum.exception.BusinessException;
-import com.forum.utils.JsonUtils;
 import com.forum.utils.StringTools;
 import com.forum.utils.VeriftyUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
-import java.util.prefs.BackingStoreException;
 
 @Component
 @Aspect
@@ -46,7 +52,7 @@ public class OperactionAspect {
             }
             // 校验登录
             if (interceptor.checkLogin()) {
-
+                checkLogin();
             }
             // 校验参数
             if (interceptor.checkParams()) {
@@ -57,16 +63,27 @@ public class OperactionAspect {
             return pointResult;
         } catch (BusinessException e) {
             logger.error("全局拦截器异常");
-            throw new BusinessException(e.getMessage());
+            throw e;
         } catch (Exception e) {
-            logger.error("全局拦截器异常");
+            logger.error("全局拦截器异常:");
+            logger.error(e.getMessage());
             throw new BusinessException(ResponseCodeEnum.CODE_500);
         } catch (Throwable e) {
-            logger.error("全局拦截器异常");
+            logger.error("全局拦截器异常:");
+            logger.error(e.getMessage());
             throw new BusinessException(ResponseCodeEnum.CODE_500);
         }
     }
 
+    private void checkLogin() throws BusinessException {
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        HttpSession session = request.getSession();
+        Object obj = session.getAttribute(Constants.SESSION_KEY);
+
+        if(null == obj){
+            throw new BusinessException(ResponseCodeEnum.CODE_901);
+        }
+    }
 
     private void validateParams(Method method, Object[] arguments) throws BusinessException {
         Parameter[] parameters = method.getParameters();

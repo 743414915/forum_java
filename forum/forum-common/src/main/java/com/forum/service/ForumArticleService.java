@@ -4,6 +4,7 @@ package com.forum.service;
 import com.forum.entity.po.ForumArticle;
 import com.forum.entity.query.ForumArticleQuery;
 import com.forum.entity.vo.PaginationResultVO;
+import com.forum.exception.BusinessException;
 
 import java.util.List;
 
@@ -58,5 +59,7 @@ public interface ForumArticleService {
 	 * 根据ArticleId删除
  	 */
 	Integer deleteForumArticleByArticleId(String articleId);
+
+	ForumArticle readArticle(String articleId) throws BusinessException;
 
 }

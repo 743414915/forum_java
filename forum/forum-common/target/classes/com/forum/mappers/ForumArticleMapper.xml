@@ -173,7 +173,7 @@
             <![CDATA[ and last_update_time < date_sub(str_to_date(#{query.lastUpdateTimeEnd}, '%Y-%m-%d'),interval -1 day) ]]>
         </if>
         <!--		查询待审核的-->
-		<if test="query.currentUserId!=null">
+        <if test="query.currentUserId!=null">
             and (status=1 or (status=0 and user_id=#{query.currentUserId}))
         </if>
     </sql>
@@ -685,4 +685,19 @@
         where article_id = #{articleId}
     </delete>
 
+    <update id="updateArticleCount">
+        update forum_article
+        <set>
+            <if test="updateType==0">
+                read_count = read_count+#{changeCount}
+            </if>
+            <if test="updateType==1">
+                good_count = good_count+#{changeCount}
+            </if>
+            <if test="updateType==2">
+                comment_count = comment_count+#{changeCount}
+            </if>
+        </set>
+        where article_id=#{articleId}
+    </update>
 </mapper>
