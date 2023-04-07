@@ -339,4 +339,10 @@
         where file_id = #{fileId}
     </delete>
 
+    <update id="updateDownloadCount">
+        update forum_article_attachment
+        set download_count = download_count + 1
+        where file_id = #{fileId}
+    </update>
+
 </mapper>

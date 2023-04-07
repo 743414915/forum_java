@@ -1,9 +1,11 @@
 package com.forum.service;
 
 
+import com.forum.entity.dto.SessionWebUserDto;
 import com.forum.entity.po.ForumArticleAttachment;
 import com.forum.entity.query.ForumArticleAttachmentQuery;
 import com.forum.entity.vo.PaginationResultVO;
+import com.forum.exception.BusinessException;
 
 import java.util.List;
 
@@ -14,49 +16,51 @@ import java.util.List;
  */
 public interface ForumArticleAttachmentService {
 
-	/**
-	 * 根据条件查询列表
- 	 */
-	List<ForumArticleAttachment> findListByParam(ForumArticleAttachmentQuery query);
+    /**
+     * 根据条件查询列表
+     */
+    List<ForumArticleAttachment> findListByParam(ForumArticleAttachmentQuery query);
 
-	/**
-	 * 根据条件查询数量
- 	 */
-	Integer findCountByParam(ForumArticleAttachmentQuery query);
+    /**
+     * 根据条件查询数量
+     */
+    Integer findCountByParam(ForumArticleAttachmentQuery query);
 
-	/**
-	 * 分页查询
- 	 */
-	PaginationResultVO<ForumArticleAttachment> findListByPage(ForumArticleAttachmentQuery query);
+    /**
+     * 分页查询
+     */
+    PaginationResultVO<ForumArticleAttachment> findListByPage(ForumArticleAttachmentQuery query);
 
-	/**
-	 * 新增
- 	 */
-	Integer add(ForumArticleAttachment bean);
+    /**
+     * 新增
+     */
+    Integer add(ForumArticleAttachment bean);
 
-	/**
-	 * 批量新增
- 	 */
-	Integer addBatch(List<ForumArticleAttachment> ListBean);
+    /**
+     * 批量新增
+     */
+    Integer addBatch(List<ForumArticleAttachment> ListBean);
 
-	/**
-	 * 批量新增或修改
- 	 */
-	Integer addOrUpdateBatch(List<ForumArticleAttachment> ListBean);
+    /**
+     * 批量新增或修改
+     */
+    Integer addOrUpdateBatch(List<ForumArticleAttachment> ListBean);
 
-	/**
-	 * 根据FileId查询
- 	 */
-	ForumArticleAttachment getForumArticleAttachmentByFileId(String fileId);
+    /**
+     * 根据FileId查询
+     */
+    ForumArticleAttachment getForumArticleAttachmentByFileId(String fileId);
 
-	/**
-	 * 根据FileId更新
- 	 */
-	Integer updateForumArticleAttachmentByFileId( ForumArticleAttachment bean, String fileId);
+    /**
+     * 根据FileId更新
+     */
+    Integer updateForumArticleAttachmentByFileId(ForumArticleAttachment bean, String fileId);
 
-	/**
-	 * 根据FileId删除
- 	 */
-	Integer deleteForumArticleAttachmentByFileId(String fileId);
+    /**
+     * 根据FileId删除
+     */
+    Integer deleteForumArticleAttachmentByFileId(String fileId);
+
+    ForumArticleAttachment downloadAttachment(String fileId, SessionWebUserDto sessionWebUserDto) throws BusinessException;
 
 }

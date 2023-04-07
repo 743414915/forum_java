@@ -4,14 +4,14 @@ import com.forum.annotation.GlobalInterceptor;
 import com.forum.annotation.VerifyParam;
 import com.forum.constants.Constants;
 import com.forum.controller.base.ABaseController;
+import com.forum.entity.config.WebConfig;
 import com.forum.entity.dto.SessionWebUserDto;
-import com.forum.entity.po.ForumArticle;
-import com.forum.entity.po.ForumArticleAttachment;
-import com.forum.entity.po.LikeRecord;
+import com.forum.entity.po.*;
 import com.forum.entity.query.ForumArticleAttachmentQuery;
 import com.forum.entity.query.ForumArticleQuery;
 import com.forum.entity.vo.PaginationResultVO;
 import com.forum.entity.vo.ResponseVO;
+import com.forum.entity.vo.UserDownloadInfoVO;
 import com.forum.entity.vo.web.ForumArticleAttachmentVO;
 import com.forum.entity.vo.web.ForumArticleDetailVO;
 import com.forum.entity.vo.web.ForumArticleVO;
@@ -20,20 +20,25 @@ import com.forum.enums.ArticleStatusEnum;
 import com.forum.enums.OperRecordOpTypeEnum;
 import com.forum.enums.ResponseCodeEnum;
 import com.forum.exception.BusinessException;
-import com.forum.service.ForumArticleAttachmentService;
-import com.forum.service.ForumArticleService;
-import com.forum.service.LikeRecordService;
+import com.forum.service.*;
 import com.forum.utils.CopyTools;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.*;
+import java.net.URLEncoder;
 import java.util.List;
 
 @RestController
 @RequestMapping("/forum")
 public class ForumArticleController extends ABaseController {
+    private static final Logger logger = LoggerFactory.getLogger(ForumArticleController.class);
 
     @Resource
     private ForumArticleService forumArticleService;
@@ -43,6 +48,15 @@ public class ForumArticleController extends ABaseController {
 
     @Resource
     private LikeRecordService likeRecordService;
+
+    @Resource
+    private UserInfoService userInfoService;
+
+    @Resource
+    private ForumArticleAttachmentDownloadService forumArticleAttachmentDownloadService;
+
+    @Resource
+    private WebConfig webConfig;
 
     @RequestMapping("/loadArticle")
     public ResponseVO loadArticle(HttpSession session, Integer boardId, Integer pBoardId, Integer orderType, Integer pageNo) {
@@ -118,5 +132,71 @@ public class ForumArticleController extends ABaseController {
 
         likeRecordService.doLike(articleId, sessionWebUserDto.getUserId(), sessionWebUserDto.getNickName(), OperRecordOpTypeEnum.ARTICLE_LIKE);
         return getSuccessResponseVO(null);
+    }
+
+    // 获取附件下载信息
+    @RequestMapping("/getUserDownloadInfo")
+    @GlobalInterceptor(checkLogin = true, checkParams = true)
+    public ResponseVO getUserDownloadInfo(HttpSession session, @VerifyParam(required = true) String fileId) throws BusinessException {
+        SessionWebUserDto sessionWebUserDto = getUserInfoFromSession(session);
+
+        UserInfo userInfo = userInfoService.getUserInfoByUserId(sessionWebUserDto.getUserId());
+
+        UserDownloadInfoVO userDownloadInfoVO = new UserDownloadInfoVO();
+        userDownloadInfoVO.setUserIntegral(userInfo.getCurrentIntegral());
+
+        ForumArticleAttachmentDownload articleAttachmentDownload = forumArticleAttachmentDownloadService.getForumArticleAttachmentDownloadByFileIdAndUserId(fileId, sessionWebUserDto.getUserId());
+        if (null != articleAttachmentDownload) {
+            userDownloadInfoVO.setHaveDownload(true);
+        }
+
+        return getSuccessResponseVO(userDownloadInfoVO);
+    }
+
+    @RequestMapping("/attachmentDownload")
+    @GlobalInterceptor(checkLogin = true, checkParams = true)
+    public void attachmentDownload(HttpSession session, HttpServletRequest request, HttpServletResponse response, @VerifyParam(required = true) String fileId) throws BusinessException {
+        ForumArticleAttachment attachment = forumArticleAttachmentService.downloadAttachment(fileId, getUserInfoFromSession(session));
+        InputStream in = null;
+        OutputStream out = null;
+        String downloadFileName = attachment.getFileName();
+        String filePath = webConfig.getProjectFolder() + Constants.FILE_FOLDER_FILE + Constants.FILE_FOLDER_ATTACHMENT + attachment.getFilePath();
+        File file = new File(filePath);
+        try {
+            in = new FileInputStream(file);
+            out = response.getOutputStream();
+            response.setContentType("application/x-msdownload; charset=UTF-8");
+            //解决中文文件乱码
+            if (request.getHeader("User_Agent").toLowerCase().indexOf("msie") > 0) { //IE浏览器
+                downloadFileName = URLEncoder.encode(downloadFileName, "UTF-8");
+            } else {
+                downloadFileName = new String(downloadFileName.getBytes("UTF-8"), "ISO8859-1");
+            }
+            response.setHeader("Content-Disposition", "attachment;filename=\"" + downloadFileName + "\"");
+            byte[] byteData = new byte[1024];
+            int len = 0;
+            while ((len = in.read(byteData)) != -1) {
+                out.write(byteData, 0, len);
+            }
+            out.flush();
+        } catch (Exception e) {
+            logger.error("下载异常");
+            throw new BusinessException("下载失败");
+        } finally {
+            try {
+                if (in != null) {
+                    in.close();
+                }
+            } catch (IOException e) {
+                logger.error("io异常", e);
+            }
+            try {
+                if (out != null) {
+                    out.close();
+                }
+            } catch (IOException e) {
+                logger.error("io异常", e);
+            }
+        }
     }
 }

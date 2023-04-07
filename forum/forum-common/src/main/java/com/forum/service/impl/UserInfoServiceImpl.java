@@ -25,6 +25,7 @@ import com.forum.utils.SysCacheUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -221,6 +222,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     /**
      * 更新用户积分
      */
+    @Override
     @Transactional(rollbackFor = Exception.class)
     public void updateUserIntegral(String userId, UserIntegralOperTypeEnum operTypeEnum, Integer changeType, Integer integral) throws BusinessException {
         integral = changeType * integral;

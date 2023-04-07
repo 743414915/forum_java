@@ -5,6 +5,7 @@ import com.forum.entity.dto.SessionWebUserDto;
 import com.forum.entity.po.UserInfo;
 import com.forum.entity.query.UserInfoQuery;
 import com.forum.entity.vo.PaginationResultVO;
+import com.forum.enums.UserIntegralOperTypeEnum;
 import com.forum.exception.BusinessException;
 
 import java.util.List;
@@ -92,6 +93,8 @@ public interface UserInfoService {
     Integer deleteUserInfoByNickName(String nickName);
 
     void register(String email, String emailCode, String nickName, String password, String checkCode) throws BusinessException;
+
+    void updateUserIntegral(String userId, UserIntegralOperTypeEnum operTypeEnum, Integer changeType, Integer integral) throws BusinessException;
 
     SessionWebUserDto login(String email, String password, String ip) throws BusinessException;
 

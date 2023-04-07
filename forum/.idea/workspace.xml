@@ -20,24 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a883bd95-44e4-49df-b57f-3dd3883f35df" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/entity/vo/web/ForumArticleAttachmentVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/entity/vo/web/ForumArticleDetailVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/enums/OperRecordOpTypeEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/enums/UpdateArticleCountTypeEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/entity/vo/UserDownloadInfoVO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/constants/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/constants/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/enums/ResponseCodeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/enums/ResponseCodeEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/mappers/ForumArticleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/mappers/ForumArticleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/ForumArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/ForumArticleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/LikeRecordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/LikeRecordService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/impl/ForumArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/impl/ForumArticleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/impl/LikeRecordServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/impl/LikeRecordServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/entity/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/entity/config/AppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/mappers/ForumArticleAttachmentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/mappers/ForumArticleAttachmentMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/ForumArticleAttachmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/ForumArticleAttachmentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/UserInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/UserInfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/impl/ForumArticleAttachmentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/impl/ForumArticleAttachmentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/impl/UserInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/impl/UserInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/resources/com/forum/mappers/ForumArticleAttachmentDownloadMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/resources/com/forum/mappers/ForumArticleAttachmentDownloadMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forum-common/src/main/resources/com/forum/mappers/ForumArticleAttachmentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/resources/com/forum/mappers/ForumArticleAttachmentMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forum-common/src/main/resources/com/forum/mappers/ForumArticleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/resources/com/forum/mappers/ForumArticleMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forum-common/target/classes/com/forum/mappers/ForumArticleAttachmentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/target/classes/com/forum/mappers/ForumArticleAttachmentMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forum-common/target/classes/com/forum/mappers/ForumArticleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/target/classes/com/forum/mappers/ForumArticleMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forum-web/src/main/java/com/forum/aspect/OperactionAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-web/src/main/java/com/forum/aspect/OperactionAspect.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forum-web/src/main/java/com/forum/controller/ForumArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-web/src/main/java/com/forum/controller/ForumArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forum-web/src/main/java/com/forum/controller/base/AGlobalExceptionHandlerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-web/src/main/java/com/forum/controller/base/AGlobalExceptionHandlerController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +49,8 @@
         <option value="FxmlFile" />
         <option value="Mapper" />
         <option value="AnnotationType" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -287,7 +281,7 @@
       <workItem from="1680770535022" duration="1208000" />
       <workItem from="1680771776331" duration="547000" />
       <workItem from="1680772349803" duration="8863000" />
-      <workItem from="1680832435002" duration="3268000" />
+      <workItem from="1680832435002" duration="8045000" />
     </task>
     <servers />
   </component>
@@ -315,10 +309,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="663" y="309" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679821088077" />
-    <state x="765" y="196" key="#com.intellij.ide.util.MemberChooser" timestamp="1680832968934">
+    <state x="765" y="196" key="#com.intellij.ide.util.MemberChooser" timestamp="1680844087965">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="196" key="#com.intellij.ide.util.MemberChooser/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680832968934" />
+    <state x="765" y="196" key="#com.intellij.ide.util.MemberChooser/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680844087965" />
     <state x="548" y="436" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1679199052248">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -339,54 +333,54 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679732569425" />
-    <state width="1293" height="297" key="GridCell.Tab.0.bottom" timestamp="1680835687702">
+    <state width="1293" height="372" key="GridCell.Tab.0.bottom" timestamp="1680835794413">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="297" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680835687702" />
-    <state width="1293" height="297" key="GridCell.Tab.0.center" timestamp="1680835687702">
+    <state width="1293" height="372" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680835794413" />
+    <state width="1293" height="372" key="GridCell.Tab.0.center" timestamp="1680835794413">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="297" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680835687702" />
-    <state width="1293" height="297" key="GridCell.Tab.0.left" timestamp="1680835687702">
+    <state width="1293" height="372" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680835794413" />
+    <state width="1293" height="372" key="GridCell.Tab.0.left" timestamp="1680835794413">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="297" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680835687702" />
-    <state width="1293" height="297" key="GridCell.Tab.0.right" timestamp="1680835687702">
+    <state width="1293" height="372" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680835794413" />
+    <state width="1293" height="372" key="GridCell.Tab.0.right" timestamp="1680835794413">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="297" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680835687702" />
-    <state width="1293" height="297" key="GridCell.Tab.1.bottom" timestamp="1680835687702">
+    <state width="1293" height="372" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680835794413" />
+    <state width="1293" height="372" key="GridCell.Tab.1.bottom" timestamp="1680835794413">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="297" key="GridCell.Tab.1.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680835687702" />
-    <state width="1293" height="297" key="GridCell.Tab.1.center" timestamp="1680835687702">
+    <state width="1293" height="372" key="GridCell.Tab.1.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680835794413" />
+    <state width="1293" height="372" key="GridCell.Tab.1.center" timestamp="1680835794413">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="297" key="GridCell.Tab.1.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680835687702" />
-    <state width="1293" height="297" key="GridCell.Tab.1.left" timestamp="1680835687702">
+    <state width="1293" height="372" key="GridCell.Tab.1.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680835794413" />
+    <state width="1293" height="372" key="GridCell.Tab.1.left" timestamp="1680835794413">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="297" key="GridCell.Tab.1.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680835687702" />
-    <state width="1293" height="297" key="GridCell.Tab.1.right" timestamp="1680835687702">
+    <state width="1293" height="372" key="GridCell.Tab.1.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680835794413" />
+    <state width="1293" height="372" key="GridCell.Tab.1.right" timestamp="1680835794413">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="297" key="GridCell.Tab.1.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680835687702" />
-    <state width="1293" height="297" key="GridCell.Tab.2.bottom" timestamp="1680835687703">
+    <state width="1293" height="372" key="GridCell.Tab.1.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680835794413" />
+    <state width="1293" height="372" key="GridCell.Tab.2.bottom" timestamp="1680835794413">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="297" key="GridCell.Tab.2.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680835687703" />
-    <state width="1293" height="297" key="GridCell.Tab.2.center" timestamp="1680835687703">
+    <state width="1293" height="372" key="GridCell.Tab.2.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680835794413" />
+    <state width="1293" height="372" key="GridCell.Tab.2.center" timestamp="1680835794413">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="297" key="GridCell.Tab.2.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680835687703" />
-    <state width="1293" height="297" key="GridCell.Tab.2.left" timestamp="1680835687703">
+    <state width="1293" height="372" key="GridCell.Tab.2.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680835794413" />
+    <state width="1293" height="372" key="GridCell.Tab.2.left" timestamp="1680835794413">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="297" key="GridCell.Tab.2.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680835687703" />
-    <state width="1293" height="297" key="GridCell.Tab.2.right" timestamp="1680835687703">
+    <state width="1293" height="372" key="GridCell.Tab.2.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680835794413" />
+    <state width="1293" height="372" key="GridCell.Tab.2.right" timestamp="1680835794413">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="297" key="GridCell.Tab.2.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680835687703" />
+    <state width="1293" height="372" key="GridCell.Tab.2.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680835794413" />
     <state width="220" height="539" key="HiddenNamespacesPopup" timestamp="1679497050100">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -407,10 +401,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="213" key="extract.method.dialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679214796865" />
-    <state x="663" y="94" width="611" height="852" key="find.popup" timestamp="1680788046225">
+    <state x="663" y="94" width="649" height="852" key="find.popup" timestamp="1680846371554">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="663" y="94" width="611" height="852" key="find.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680788046225" />
+    <state x="663" y="94" width="649" height="852" key="find.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1680846371554" />
     <state width="600" height="428" key="javadoc.popup" timestamp="1679222052292">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -431,11 +425,6 @@
           <url>file://$PROJECT_DIR$/easyJava/src/main/java/common/easyjava/builder/BuildTable.java</url>
           <line>56</line>
           <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/forum-web/src/main/java/com/forum/controller/base/AGlobalExceptionHandlerController.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
