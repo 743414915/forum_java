@@ -20,7 +20,7 @@ public class ForumArticleAttachmentVO {
     /**
      * 下载次数
      */
-    private Integer downLoadCount;
+    private Integer downloadCount;
 
     /**
      * 文件类型
@@ -56,12 +56,12 @@ public class ForumArticleAttachmentVO {
         this.fileName = fileName;
     }
 
-    public Integer getDownLoadCount() {
-        return downLoadCount;
+    public Integer getDownloadCount() {
+        return downloadCount;
     }
 
-    public void setDownLoadCount(Integer downLoadCount) {
-        this.downLoadCount = downLoadCount;
+    public void setDownloadCount(Integer downloadCount) {
+        this.downloadCount = downloadCount;
     }
 
     public Integer getFileType() {

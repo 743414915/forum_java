@@ -77,6 +77,12 @@ public class ForumArticleController extends ABaseController {
         articleQuery.setOrderBy(orderTypeEnum.getOrderSql());
 
         PaginationResultVO resultVO = forumArticleService.findListByPage(articleQuery);
+//        try {
+//            // 模拟网速慢的时候，等待二秒，为了可以在前端展示loading
+//            TimeUnit.SECONDS.sleep(2);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         return getSuccessResponseVO(convert2PaginationVO(resultVO, ForumArticleVO.class));
     }
 
@@ -167,7 +173,7 @@ public class ForumArticleController extends ABaseController {
             out = response.getOutputStream();
             response.setContentType("application/x-msdownload; charset=UTF-8");
             //解决中文文件乱码
-            if (request.getHeader("User_Agent").toLowerCase().indexOf("msie") > 0) { //IE浏览器
+            if (request.getHeader("User-Agent").toLowerCase().indexOf("msie") > 0) { //IE浏览器
                 downloadFileName = URLEncoder.encode(downloadFileName, "UTF-8");
             } else {
                 downloadFileName = new String(downloadFileName.getBytes("UTF-8"), "ISO8859-1");

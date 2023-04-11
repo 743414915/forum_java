@@ -184,7 +184,7 @@ public class BuildMapperXML {
 
             bw.write("\t\t<if test=\"query.orderBy!=null\">");
             bw.newLine();
-            bw.write("\t\t\tORDER BY #{query.orderBy}");
+            bw.write("\t\t\tORDER BY ${query.orderBy}");
             bw.newLine();
             bw.write("\t\t</if>");
 
@@ -227,7 +227,7 @@ public class BuildMapperXML {
                 }
             }
             if (autoIncrementDiled != null) {
-                bw.write("\t\t<selectKey keyProperty=\"bean." + autoIncrementDiled.getPropertyName() + "\" resultType=\"" + autoIncrementDiled.getJavaType() + "\" order=\"AFTER\">");
+                bw.write("\t\t<selectKey keyProperty=\"bean." + autoIncrementDiled.getFieldName() + "\" resultType=\"" + autoIncrementDiled.getJavaType() + "\" order=\"AFTER\">");
                 bw.newLine();
                 bw.write("\t\t\tSELECT LAST_INSERT_ID()");
                 bw.newLine();

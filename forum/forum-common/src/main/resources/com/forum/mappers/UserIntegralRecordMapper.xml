@@ -68,7 +68,7 @@
 			FROM user_integral_record
 		<include refid="query_condition"/>
 		<if test="query.orderBy!=null">
-			ORDER BY #{query.orderBy}
+			ORDER BY ${query.orderBy}
 		</if>
 		<if test="query.simplePage!=null">
 			LIMIT #{query.simplePage.start}, #{query.simplePage.end}

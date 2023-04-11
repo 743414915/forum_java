@@ -94,7 +94,7 @@
 
 	<!--插入（匹配有值的字段）-->
 	<insert id="insert" parameterType="com.forum.entity.po.LikeRecord">
-		<selectKey keyProperty="bean.op_id" resultType="Integer" order="AFTER">
+		<selectKey keyProperty="bean.opId" resultType="Integer" order="AFTER">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 		INSERT INTO like_record

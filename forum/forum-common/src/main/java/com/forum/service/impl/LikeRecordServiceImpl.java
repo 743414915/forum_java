@@ -2,16 +2,15 @@ package com.forum.service.impl;
 
 import com.forum.constants.Constants;
 import com.forum.entity.po.ForumArticle;
+import com.forum.entity.po.ForumComment;
 import com.forum.entity.po.LikeRecord;
 import com.forum.entity.po.UserMessage;
-import com.forum.entity.query.ForumArticleQuery;
-import com.forum.entity.query.LikeRecordQuery;
-import com.forum.entity.query.SimplePage;
-import com.forum.entity.query.UserMessageQuery;
+import com.forum.entity.query.*;
 import com.forum.entity.vo.PaginationResultVO;
 import com.forum.enums.*;
 import com.forum.exception.BusinessException;
 import com.forum.mappers.ForumArticleMapper;
+import com.forum.mappers.ForumCommentMapper;
 import com.forum.mappers.LikeRecordMapper;
 import com.forum.mappers.UserMessageMapper;
 import com.forum.service.LikeRecordService;
@@ -40,6 +39,9 @@ public class LikeRecordServiceImpl implements LikeRecordService {
 
     @Resource
     private ForumArticleMapper<ForumArticle, ForumArticleQuery> forumArticleMapper;
+
+    @Resource
+    private ForumCommentMapper<ForumComment, ForumCommentQuery> forumCommentMapper;
 
     /**
      * 根据条件查询列表
@@ -160,6 +162,20 @@ public class LikeRecordServiceImpl implements LikeRecordService {
                 userMessage.setReceivedUserId(forumArticle.getUserId());
                 break;
             case COMMENT_LIKE:
+                ForumComment forumComment = forumCommentMapper.selectByCommentId(Integer.parseInt(objectId));
+                if (null == forumComment) {
+                    throw new BusinessException("评论不存在");
+                }
+                commentLike(forumComment, objectId, userId, opTypeEnum);
+
+                forumArticle = forumArticleMapper.selectByArticleId(forumComment.getArticleId());
+
+                userMessage.setArticleId(objectId);
+                userMessage.setArticleTitle(forumArticle.getTitle());
+                userMessage.setMessageType(MessageTypeEnum.ARTICLE_LIKE.getType());
+                userMessage.setCommentId(forumComment.getCommentId());
+                userMessage.setReceivedUserId(forumComment.getUserId());
+                userMessage.setMessageContent(forumComment.getContent());
                 break;
         }
         userMessage.setSendUserId(userId);
@@ -174,21 +190,41 @@ public class LikeRecordServiceImpl implements LikeRecordService {
         }
     }
 
-    public void articleLike(ForumArticle forumArticle, String objId, String userId, OperRecordOpTypeEnum opTypeEnum) throws BusinessException {
-        LikeRecord record = this.likeRecordMapper.selectByObjectIdAndUserIdAndOpType(objId, userId, opTypeEnum.getType());
+    public void articleLike(ForumArticle forumArticle, String objectId, String userId, OperRecordOpTypeEnum opTypeEnum) {
+        LikeRecord record = this.likeRecordMapper.selectByObjectIdAndUserIdAndOpType(objectId, userId, opTypeEnum.getType());
+        Integer changeCount = 0;
         if (record != null) {
-            this.likeRecordMapper.deleteByObjectIdAndUserIdAndOpType(objId, userId, opTypeEnum.getType());
-            forumArticleMapper.updateArticleCount(UpdateArticleCountTypeEnum.GOOD_COUNT.getType(), Constants.NEGATIVE_ONE, objId);
+            this.likeRecordMapper.deleteByObjectIdAndUserIdAndOpType(objectId, userId, opTypeEnum.getType());
+            changeCount = Constants.NEGATIVE_ONE;
         } else {
             LikeRecord likeRecord = new LikeRecord();
-            likeRecord.setObjectId(objId);
+            likeRecord.setObjectId(objectId);
             likeRecord.setUserId(userId);
             likeRecord.setOpType(opTypeEnum.getType());
             likeRecord.setCreateTime(new Date());
             likeRecord.setAuthorUserId(forumArticle.getUserId());
             this.likeRecordMapper.insert(likeRecord);
-
-            forumArticleMapper.updateArticleCount(UpdateArticleCountTypeEnum.GOOD_COUNT.getType(), Constants.ONE, objId);
+            changeCount = Constants.ONE;
         }
+        forumArticleMapper.updateArticleCount(UpdateArticleCountTypeEnum.GOOD_COUNT.getType(), changeCount, objectId);
+    }
+
+    public void commentLike(ForumComment forumComment, String objectId, String userId, OperRecordOpTypeEnum opTypeEnum) {
+        LikeRecord record = this.likeRecordMapper.selectByObjectIdAndUserIdAndOpType(objectId, userId, opTypeEnum.getType());
+        Integer changeCount = 0;
+        if (record != null) {
+            this.likeRecordMapper.deleteByObjectIdAndUserIdAndOpType(objectId, userId, opTypeEnum.getType());
+            changeCount = Constants.NEGATIVE_ONE;
+        } else {
+            LikeRecord likeRecord = new LikeRecord();
+            likeRecord.setObjectId(objectId);
+            likeRecord.setUserId(userId);
+            likeRecord.setOpType(opTypeEnum.getType());
+            likeRecord.setCreateTime(new Date());
+            likeRecord.setAuthorUserId(forumComment.getUserId());
+            this.likeRecordMapper.insert(likeRecord);
+            changeCount = Constants.ONE;
+        }
+        forumCommentMapper.updateCommentGoodCount(changeCount, Integer.parseInt(objectId));
     }
 }

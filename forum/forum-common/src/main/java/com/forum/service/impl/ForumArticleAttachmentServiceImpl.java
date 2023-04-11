@@ -130,9 +130,9 @@ public class ForumArticleAttachmentServiceImpl implements ForumArticleAttachment
             throw new BusinessException("附件不存在");
         }
         ForumArticleAttachmentDownload download = null;
+        download = this.forumArticleAttachmentDownloadMapper.selectByFileIdAndUserId(fileId, sessionWebUserDto.getUserId());
         if (forumArticleAttachment.getIntegral() > 0 && !sessionWebUserDto.getUserId().equals(forumArticleAttachment.getUserId())) {
-            download = this.forumArticleAttachmentDownloadMapper.selectByFileIdAndUserId(fileId, sessionWebUserDto.getUserId());
-            if (download != null) {
+            if (download == null) {
                 UserInfo userInfo = userInfoService.getUserInfoByUserId(sessionWebUserDto.getUserId());
                 if (userInfo.getCurrentIntegral() - forumArticleAttachment.getIntegral() < 0) {
                     throw new BusinessException("积分不足");
@@ -172,8 +172,8 @@ public class ForumArticleAttachmentServiceImpl implements ForumArticleAttachment
         userMessage.setArticleTitle(forumArticle.getTitle());
         userMessage.setReceivedUserId(forumArticle.getUserId());
         userMessage.setCommentId(Constants.ZERO);
-        userMessage.setSendUserId(forumArticle.getUserId());
-        userMessage.setSendNickName(forumArticle.getNickName());
+        userMessage.setSendUserId(sessionWebUserDto.getUserId());
+        userMessage.setSendNickName(sessionWebUserDto.getNickName());
         userMessage.setStatus(MessageStatusEnum.NO_READ.getStatus());
 
         userMessageMapper.insert(userMessage);
