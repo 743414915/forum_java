@@ -141,7 +141,7 @@
         <include refid="base_column_list"/>
         <if test="query.queryLikeType != null and query.queryLikeType and query.currentUserId != null">
             ,(select count(1) from like_record r where r.object_id = c.comment_id and r.user_id =
-            #{query.currnetUserId}) likeType
+            #{query.currentUserId}) likeType
         </if>
         FROM forum_comment c
         <include refid="query_condition"/>

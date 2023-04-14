@@ -8,7 +8,7 @@ public class WebConfig extends AppConfig {
     @Value("${spring.mail.username}")
     private String sendUserName;
 
-    @Value("admin.emails:")
+    @Value("${admin.emails}")
     private String adminEmail;
 
     public String getAdminEmail() {

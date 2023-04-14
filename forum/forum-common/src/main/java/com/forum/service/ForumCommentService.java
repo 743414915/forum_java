@@ -5,6 +5,7 @@ import com.forum.entity.po.ForumComment;
 import com.forum.entity.query.ForumCommentQuery;
 import com.forum.entity.vo.PaginationResultVO;
 import com.forum.exception.BusinessException;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -62,4 +63,5 @@ public interface ForumCommentService {
 
     void changeTopType(String userId, Integer commentId, Integer topType) throws BusinessException;
 
+    void postComment(ForumComment comment, MultipartFile image) throws BusinessException;
 }
