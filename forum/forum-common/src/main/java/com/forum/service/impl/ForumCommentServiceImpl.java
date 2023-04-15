@@ -173,7 +173,7 @@ public class ForumCommentServiceImpl implements ForumCommentService {
             throw new BusinessException(ResponseCodeEnum.CODE_600);
         }
 
-        if (!forumArticle.getUserId().equals(userId) || forumComment.getCommentId() != 0) {
+        if (!forumArticle.getUserId().equals(userId) || forumComment.getPCommentId() != 0) {
             throw new BusinessException(ResponseCodeEnum.CODE_600);
         }
         if (forumComment.getTopType().equals(topType)) {
@@ -202,7 +202,7 @@ public class ForumCommentServiceImpl implements ForumCommentService {
             }
         }
         // 判断回复的用户是否存在
-        if (!StringTools.isEmpty(comment.getReplyNickName())) {
+        if (!StringTools.isEmpty(comment.getReplyUserId())) {
             UserInfo userInfo = userInfoService.getUserInfoByUserId(comment.getReplyUserId());
             if (userInfo == null) {
                 throw new BusinessException("回复的用户不存在");

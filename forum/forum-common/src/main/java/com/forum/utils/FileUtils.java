@@ -35,7 +35,7 @@ public class FileUtils {
             if (originalFileName.length() > Constants.LENGTH_200) {
                 originalFileName = StringTools.getFileName(originalFileName).substring(0, 190) + fileSuffix;
             }
-            if (ArrayUtils.contains(uploadTypeEnum.getSuffixArray(), fileSuffix)) {
+            if (!ArrayUtils.contains(uploadTypeEnum.getSuffixArray(), fileSuffix)) {
                 throw new BusinessException("文件类型不正确");
             }
             String month = DateUtils.formal(new Date(), DateTimePatternEnum.YYYY_MM.getPattern());

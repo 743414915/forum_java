@@ -26,7 +26,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/comment")
 public class ForumCommentController extends ABaseController {
-
     @Resource
     private ForumCommentService forumCommentService;
 
@@ -44,7 +43,7 @@ public class ForumCommentController extends ABaseController {
         ForumCommentQuery commentQuery = new ForumCommentQuery();
         commentQuery.setArticleId(articleId);
         String orderBy = orderType == null || orderType.equals(Constants.ZERO) ? ORDER_TYPE0 : ORDER_TYPE1;
-        commentQuery.setOrderBy("top_type," + orderBy);
+        commentQuery.setOrderBy("top_type desc," + orderBy);
         commentQuery.setPageNo(pageNo);
 
         SessionWebUserDto userDto = getUserInfoFromSession(session);
