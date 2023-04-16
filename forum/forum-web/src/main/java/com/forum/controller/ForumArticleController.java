@@ -264,4 +264,69 @@ public class ForumArticleController extends ABaseController {
 
         return getSuccessResponseVO(forumArticle.getArticleId());
     }
+
+
+    @RequestMapping("/articleDetail4Update")
+    @GlobalInterceptor(checkLogin = true, checkParams = true)
+    public ResponseVO articleDetail4Update(HttpSession session, @VerifyParam(required = true) String articleId) throws BusinessException {
+        SessionWebUserDto userDto = getUserInfoFromSession(session);
+        ForumArticle forumArticle = forumArticleService.getForumArticleByArticleId(articleId);
+
+        if (forumArticle == null || !forumArticle.getUserId().equals(userDto.getUserId())) {
+            throw new BusinessException("文章不存在或者无权编辑该文章");
+        }
+        ForumArticleDetailVO detailVO = new ForumArticleDetailVO();
+        detailVO.setForumArticleVO(CopyTools.copy(forumArticle, ForumArticleVO.class));
+
+        if (forumArticle.getAttachmentType().equals(Constants.ONE)) {
+            ForumArticleAttachmentQuery articleAttachmentQuery = new ForumArticleAttachmentQuery();
+            articleAttachmentQuery.setArticleId(articleId);
+            List<ForumArticleAttachment> forumArticleAttachmentList = forumArticleAttachmentService.findListByParam(articleAttachmentQuery);
+            if (!forumArticleAttachmentList.isEmpty()) {
+                detailVO.setAttachmentVO(CopyTools.copy(forumArticleAttachmentList.get(0), ForumArticleAttachmentVO.class));
+            }
+        }
+
+        return getSuccessResponseVO(detailVO);
+    }
+
+    @RequestMapping("/updateArticle")
+    @GlobalInterceptor(checkLogin = true, checkParams = true)
+    public ResponseVO updateArticle(HttpSession session,
+                                    MultipartFile cover,
+                                    MultipartFile attachment,
+                                    Integer integral,
+                                    @VerifyParam(required = true) String articleId,
+                                    @VerifyParam(required = true, max = 150) String title,
+                                    @VerifyParam(required = true) Integer pBoardId,
+                                    Integer boardId,
+                                    @VerifyParam(max = 200) String summary,
+                                    @VerifyParam(required = true) Integer editorType,
+                                    @VerifyParam(required = true) String content,
+                                    String markdownContent,
+                                    @VerifyParam Integer attachmentType) throws BusinessException {
+        SessionWebUserDto webUserDto = getUserInfoFromSession(session);
+        title = StringTools.ecpapeHtml(title);
+
+        ForumArticle forumArticle = new ForumArticle();
+        forumArticle.setArticleId(articleId);
+        forumArticle.setPBoardId(pBoardId);
+        forumArticle.setBoardId(boardId);
+        forumArticle.setTitle(title);
+        forumArticle.setContent(content);
+        forumArticle.setMarkdownContent(markdownContent);
+        forumArticle.setEditorType(editorType);
+        forumArticle.setSummary(summary);
+        forumArticle.setUserIpAddress(webUserDto.getProvince());
+        forumArticle.setAttachmentType(attachmentType);
+        forumArticle.setUserId(webUserDto.getUserId());
+
+        // 附件信息
+        ForumArticleAttachment forumArticleAttachment = new ForumArticleAttachment();
+        forumArticleAttachment.setIntegral(integral == null ? 0 : integral);
+
+        forumArticleService.updateArticle(webUserDto.getAdmin(), forumArticle, forumArticleAttachment, cover, attachment);
+
+        return getSuccessResponseVO(forumArticle.getArticleId());
+    }
 }

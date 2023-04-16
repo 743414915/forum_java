@@ -87,7 +87,6 @@ public class ForumComment implements Serializable {
     /**
      * 0:待审核  1:已审核
      */
-    @JsonIgnore
     private Integer status;
 
     /**

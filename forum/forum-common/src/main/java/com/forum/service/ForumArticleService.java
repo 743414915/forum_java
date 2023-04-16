@@ -65,4 +65,6 @@ public interface ForumArticleService {
     ForumArticle readArticle(String articleId) throws BusinessException;
 
     void postArticle(Boolean isAdmin, ForumArticle article, ForumArticleAttachment articleAttachment, MultipartFile cover, MultipartFile attachment) throws BusinessException;
+
+    void updateArticle(Boolean isAdmin, ForumArticle article, ForumArticleAttachment articleAttachment, MultipartFile cover, MultipartFile attachment) throws BusinessException;
 }

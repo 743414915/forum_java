@@ -64,6 +64,15 @@ public class ForumArticleVO implements Serializable {
      */
     private String content;
 
+    /**
+     * markdown的内容
+     */
+    private String markdownContent;
+
+    /**
+     * 0:富文本编辑器 1:markdown编辑器
+     */
+    private Integer editorType;
 
     /**
      * 摘要
@@ -108,6 +117,22 @@ public class ForumArticleVO implements Serializable {
      */
     @JsonIgnore
     private Integer status;
+
+    public Integer getEditorType() {
+        return editorType;
+    }
+
+    public void setEditorType(Integer editorType) {
+        this.editorType = editorType;
+    }
+
+    public String getMarkdownContent() {
+        return markdownContent;
+    }
+
+    public void setMarkdownContent(String markdownContent) {
+        this.markdownContent = markdownContent;
+    }
 
     public String getArticleId() {
         return articleId;

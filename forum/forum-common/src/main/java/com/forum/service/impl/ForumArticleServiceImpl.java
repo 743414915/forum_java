@@ -1,6 +1,7 @@
 package com.forum.service.impl;
 
 import com.forum.constants.Constants;
+import com.forum.entity.config.AppConfig;
 import com.forum.entity.dto.FileUploadDto;
 import com.forum.entity.dto.SysSetting4AuditDto;
 import com.forum.entity.dto.SysSettingDto;
@@ -26,6 +27,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.io.File;
 import java.util.Date;
 import java.util.List;
 
@@ -56,6 +58,9 @@ public class ForumArticleServiceImpl implements ForumArticleService {
 
     @Resource
     private ImageUtils imageUtils;
+
+    @Resource
+    private AppConfig appConfig;
 
     /**
      * 根据条件查询列表
@@ -158,20 +163,22 @@ public class ForumArticleServiceImpl implements ForumArticleService {
             FileUploadDto fileUploadDto = fileUtils.uploadFile2Local(cover, Constants.FILE_FOLDER_IMAGE, FileUploadTypeEnum.ARTICLE_COVER);
             article.setCover(fileUploadDto.getLocalPath());
         }
+        // 有无附件
+        Integer articleAttachmentType = ArticleAttachmentTypeEnum.HAVE_ATTACHMENT.getType();
         if (attachment != null) {
             uploadAttachment(article, articleAttachment, attachment, false);
-            article.setAttachmentType(ArticleAttachmentTypeEnum.HAVE_ATTACHMENT.getType());
         } else {
-            article.setAttachmentType(ArticleAttachmentTypeEnum.NO_ATTACHMENT.getType());
+            articleAttachmentType = ArticleAttachmentTypeEnum.NO_ATTACHMENT.getType();
         }
+        article.setAttachmentType(articleAttachmentType);
 
         // 文章审核信息
-        if (isAdmin) {
-            article.setStatus(ArticleStatusEnum.AUDIT.getStatus());
-        } else {
+        Integer articleStatusType = ArticleStatusEnum.AUDIT.getStatus();
+        if (!isAdmin) {
             SysSetting4AuditDto auditDto = SysCacheUtils.getSysSetting().getAuditSetting();
-            article.setStatus(auditDto.getPostAudit() ? ArticleStatusEnum.NO_AUDIT.getStatus() : ArticleStatusEnum.AUDIT.getStatus());
+            articleStatusType = auditDto.getPostAudit() ? ArticleStatusEnum.NO_AUDIT.getStatus() : ArticleStatusEnum.AUDIT.getStatus();
         }
+        article.setStatus(articleStatusType);
         // 替换图片
         String content = article.getContent();
         if (!StringTools.isEmpty(content)) {
@@ -193,6 +200,70 @@ public class ForumArticleServiceImpl implements ForumArticleService {
         if (postIntegral > Constants.ZERO && ArticleStatusEnum.AUDIT.equals(article.getStatus())) {
             userInfoService.updateUserIntegral(article.getUserId(), UserIntegralOperTypeEnum.POST_ARTICLE, UserIntegralChangeTypeEnum.ADD.getChangeType(), postIntegral);
         }
+    }
+
+    @Override
+    public void updateArticle(Boolean isAdmin, ForumArticle article, ForumArticleAttachment articleAttachment, MultipartFile cover, MultipartFile attachment) throws BusinessException {
+        ForumArticle dbInfo = forumArticleMapper.selectByArticleId(article.getArticleId());
+        if (!isAdmin && dbInfo.getUserId().equals(article.getUserId())) {
+            throw new BusinessException(ResponseCodeEnum.CODE_600);
+        }
+        article.setLastUpdateTime(new Date());
+        resetBoardInfo(isAdmin, article);
+
+        if (cover != null) {
+            FileUploadDto fileUploadDto = fileUtils.uploadFile2Local(cover, Constants.FILE_FOLDER_IMAGE, FileUploadTypeEnum.ARTICLE_COVER);
+            article.setCover(fileUploadDto.getLocalPath());
+        }
+        if (attachment != null) {
+            uploadAttachment(article, articleAttachment, attachment, true);
+            article.setAttachmentType(ArticleAttachmentTypeEnum.HAVE_ATTACHMENT.getType());
+        }
+
+        ForumArticleAttachment dbAttachment = null;
+        ForumArticleAttachmentQuery articleAttachmentQuery = new ForumArticleAttachmentQuery();
+        articleAttachmentQuery.setArticleId(article.getArticleId());
+        List<ForumArticleAttachment> articleAttachmentList = this.forumArticleAttachmentMapper.selectList(articleAttachmentQuery);
+        if (!articleAttachmentList.isEmpty()) {
+            dbAttachment = articleAttachmentList.get(0);
+        }
+        if (dbAttachment != null) {
+            // 如果用户修改文章的时候把附件删除
+            if (article.getAttachmentType().equals(Constants.ZERO)) {
+                new File(appConfig.getProjectFolder() + Constants.FILE_FOLDER_FILE + Constants.FILE_FOLDER_ATTACHMENT + dbAttachment.getFilePath()).delete();
+                this.forumArticleAttachmentMapper.deleteByFileId(dbAttachment.getFileId());
+            } else {
+                // 更新积分
+                if (!dbAttachment.getIntegral().equals(articleAttachment.getArticleId())) {
+                    ForumArticleAttachment integralUpdate = new ForumArticleAttachment();
+                    integralUpdate.setIntegral(articleAttachment.getIntegral());
+                    this.forumArticleAttachmentMapper.updateByFileId(integralUpdate, dbAttachment.getFileId());
+                }
+            }
+        }
+
+        // 文章是否需要审核
+        if (isAdmin) {
+            article.setStatus(ArticleStatusEnum.AUDIT.getStatus());
+        } else {
+            SysSetting4AuditDto auditDto = SysCacheUtils.getSysSetting().getAuditSetting();
+            article.setStatus(auditDto.getPostAudit() ? ArticleStatusEnum.NO_AUDIT.getStatus() : ArticleStatusEnum.AUDIT.getStatus());
+        }
+
+        // 替换图片
+        String content = article.getContent();
+        if (!StringTools.isEmpty(content)) {
+            String month = imageUtils.resetImageHtml(content);
+            String replaceMonth = "/" + month + "/";
+            content = content.replace(Constants.FILE_FOLDER_TEMP, replaceMonth);
+            article.setContent(content);
+            String markdownContent = article.getMarkdownContent();
+            if (!StringTools.isEmpty(markdownContent)) {
+                markdownContent = markdownContent.replace(Constants.FILE_FOLDER_TEMP, replaceMonth);
+                article.setMarkdownContent(markdownContent);
+            }
+        }
+        this.forumArticleMapper.updateByArticleId(article, article.getArticleId());
     }
 
     private void resetBoardInfo(Boolean isAdmin, ForumArticle forumArticle) throws BusinessException {
@@ -221,20 +292,35 @@ public class ForumArticleServiceImpl implements ForumArticleService {
         }
 
         // 修改
+        ForumArticleAttachment dbinfo = null;
         if (isUpdate) {
-
+            ForumArticleAttachmentQuery articleAttachmentQuery = new ForumArticleAttachmentQuery();
+            articleAttachmentQuery.setArticleId(article.getArticleId());
+            List<ForumArticleAttachment> articleAttachmentList = this.forumArticleAttachmentMapper.selectList(articleAttachmentQuery);
+            if (!articleAttachmentList.isEmpty()) {
+                dbinfo = articleAttachmentList.get(0);
+                new File(appConfig.getProjectFolder() + Constants.FILE_FOLDER_FILE + Constants.FILE_FOLDER_ATTACHMENT + dbinfo.getFilePath()).delete();
+            }
         }
         FileUploadDto fileUploadDto = fileUtils.uploadFile2Local(file, Constants.FILE_FOLDER_ATTACHMENT, FileUploadTypeEnum.ARTICLE_ATTACHMENT);
+        if (dbinfo == null) {
+            articleAttachment.setFileId(StringTools.getRandomNumber(Constants.LENGTH_15));
+            articleAttachment.setArticleId(article.getArticleId());
+            articleAttachment.setFileName(fileUploadDto.getOriginalFileName());
+            articleAttachment.setFilePath(fileUploadDto.getLocalPath());
+            articleAttachment.setFileSize(file.getSize());
+            articleAttachment.setDownloadCount(Constants.ZERO);
+            articleAttachment.setFileType(AttachmentFileTypeEnum.ZIP.getType());
+            articleAttachment.setUserId(article.getUserId());
 
-        articleAttachment.setFileId(StringTools.getRandomNumber(Constants.LENGTH_15));
-        articleAttachment.setArticleId(article.getArticleId());
-        articleAttachment.setFileName(fileUploadDto.getOriginalFileName());
-        articleAttachment.setFilePath(fileUploadDto.getLocalPath());
-        articleAttachment.setFileSize(file.getSize());
-        articleAttachment.setDownloadCount(Constants.ZERO);
-        articleAttachment.setFileType(AttachmentFileTypeEnum.ZIP.getType());
-        articleAttachment.setUserId(article.getUserId());
+            forumArticleAttachmentMapper.insert(articleAttachment);
+        } else {
+            ForumArticleAttachment updateInfo = new ForumArticleAttachment();
+            updateInfo.setFileName(fileUploadDto.getOriginalFileName());
+            updateInfo.setFileSize(file.getSize());
+            updateInfo.setFilePath(fileUploadDto.getLocalPath());
+            forumArticleAttachmentMapper.updateByFileId(updateInfo, dbinfo.getFileId());
+        }
 
-        forumArticleAttachmentMapper.insert(articleAttachment);
     }
 }
