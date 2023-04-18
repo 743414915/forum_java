@@ -40,43 +40,43 @@
     <!--基础查询条件-->
     <sql id="base_query_condition">
         <if test="query.userId != null and query.userId != null">
-            and id = #{query.userId}
+            and user_id = #{query.userId}
         </if>
         <if test="query.nickName != null and query.nickName != null">
-            and id = #{query.nickName}
+            and nick_name = #{query.nickName}
         </if>
         <if test="query.email != null and query.email != null">
-            and id = #{query.email}
+            and email = #{query.email}
         </if>
         <if test="query.password != null and query.password != null">
-            and id = #{query.password}
+            and password = #{query.password}
         </if>
         <if test="query.sex != null">
-            and id = #{query.sex}
+            and sex = #{query.sex}
         </if>
         <if test="query.personDescription != null and query.personDescription != null">
-            and id = #{query.personDescription}
+            and person_description = #{query.personDescription}
         </if>
         <if test="query.joinTime != null">
-            and id = #{query.joinTime}
+            and join_time = #{query.joinTime}
         </if>
         <if test="query.lastLoginTime != null">
-            and id = #{query.lastLoginTime}
+            and last_login_time = #{query.lastLoginTime}
         </if>
         <if test="query.lastLoginIp != null and query.lastLoginIp != null">
-            and id = #{query.lastLoginIp}
+            and last_login_ip = #{query.lastLoginIp}
         </if>
         <if test="query.lastLoginIpAddress != null and query.lastLoginIpAddress != null">
-            and id = #{query.lastLoginIpAddress}
+            and last_login_ip_address = #{query.lastLoginIpAddress}
         </if>
         <if test="query.totalIntegral != null">
-            and id = #{query.totalIntegral}
+            and total_integral = #{query.totalIntegral}
         </if>
         <if test="query.currentIntegral != null">
-            and id = #{query.currentIntegral}
+            and current_integral = #{query.currentIntegral}
         </if>
         <if test="query.status != null">
-            and id = #{query.status}
+            and status = #{query.status}
         </if>
     </sql>
 
@@ -132,7 +132,7 @@
         FROM user_info
         <include refid="query_condition"/>
         <if test="query.orderBy!=null">
-            ORDER BY #{query.orderBy}
+            ORDER BY ${query.orderBy}
         </if>
         <if test="query.simplePage!=null">
             LIMIT #{query.simplePage.start}, #{query.simplePage.end}

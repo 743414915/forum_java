@@ -45,7 +45,7 @@ public class UserCenterController extends ABaseController {
     @Resource
     private UserIntegralRecordService userIntegralRecordService;
 
-    @RequestMapping("getUserInfo")
+    @RequestMapping("/getUserInfo")
     @GlobalInterceptor(checkParams = true)
     public ResponseVO getUserInfo(@VerifyParam(required = true) String userId) throws BusinessException {
         UserInfo userInfo = userInfoService.getUserInfoByUserId(userId);

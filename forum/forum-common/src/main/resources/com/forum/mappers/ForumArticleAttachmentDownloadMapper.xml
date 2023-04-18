@@ -22,16 +22,16 @@
 	<!--基础查询条件-->
 	<sql id="base_query_condition">
 		<if test="query.fileId != null and query.fileId != null">
-			and id = #{query.fileId}
+			and file_id = #{query.fileId}
 		</if>
 		<if test="query.userId != null and query.userId != null">
-			and id = #{query.userId}
+			and user_id = #{query.userId}
 		</if>
 		<if test="query.articleId != null and query.articleId != null">
-			and id = #{query.articleId}
+			and article_id = #{query.articleId}
 		</if>
 		<if test="query.downloadCount != null">
-			and id = #{query.downloadCount}
+			and download_count = #{query.downloadCount}
 		</if>
 	</sql>
 
@@ -63,7 +63,7 @@
 			FROM forum_article_attachment_download
 		<include refid="query_condition"/>
 		<if test="query.orderBy!=null">
-			ORDER BY #{query.orderBy}
+			ORDER BY ${query.orderBy}
 		</if>
 		<if test="query.simplePage!=null">
 			LIMIT #{query.simplePage.start}, #{query.simplePage.end}

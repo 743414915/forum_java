@@ -28,25 +28,25 @@
 	<!--基础查询条件-->
 	<sql id="base_query_condition">
 		<if test="query.boardId != null">
-			and id = #{query.boardId}
+			and board_id = #{query.boardId}
 		</if>
 		<if test="query.pBoardId != null">
-			and id = #{query.pBoardId}
+			and p_board_id = #{query.pBoardId}
 		</if>
 		<if test="query.boardName != null and query.boardName != null">
-			and id = #{query.boardName}
+			and board_name = #{query.boardName}
 		</if>
 		<if test="query.cover != null and query.cover != null">
-			and id = #{query.cover}
+			and cover = #{query.cover}
 		</if>
 		<if test="query.boardDesc != null and query.boardDesc != null">
-			and id = #{query.boardDesc}
+			and board_desc = #{query.boardDesc}
 		</if>
 		<if test="query.sort != null">
-			and id = #{query.sort}
+			and sort = #{query.sort}
 		</if>
 		<if test="query.postType != null">
-			and id = #{query.postType}
+			and post_type = #{query.postType}
 		</if>
 	</sql>
 

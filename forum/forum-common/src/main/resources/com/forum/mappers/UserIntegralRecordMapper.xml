@@ -24,19 +24,19 @@
 	<!--基础查询条件-->
 	<sql id="base_query_condition">
 		<if test="query.recordId != null">
-			and id = #{query.recordId}
+			and record_id = #{query.recordId}
 		</if>
 		<if test="query.userId != null and query.userId != null">
-			and id = #{query.userId}
+			and user_id = #{query.userId}
 		</if>
 		<if test="query.operType != null">
-			and id = #{query.operType}
+			and oper_type = #{query.operType}
 		</if>
 		<if test="query.integral != null">
-			and id = #{query.integral}
+			and integral = #{query.integral}
 		</if>
 		<if test="query.createTime != null">
-			and id = #{query.createTime}
+			and create_time = #{query.createTime}
 		</if>
 	</sql>
 

@@ -22,16 +22,16 @@
 	<!--基础查询条件-->
 	<sql id="base_query_condition">
 		<if test="query.email != null and query.email != null">
-			and id = #{query.email}
+			and email = #{query.email}
 		</if>
 		<if test="query.code != null and query.code != null">
-			and id = #{query.code}
+			and code = #{query.code}
 		</if>
 		<if test="query.createTime != null">
-			and id = #{query.createTime}
+			and create_time = #{query.createTime}
 		</if>
 		<if test="query.status != null">
-			and id = #{query.status}
+			and status = #{query.status}
 		</if>
 	</sql>
 
@@ -66,7 +66,7 @@
 			FROM email_code
 		<include refid="query_condition"/>
 		<if test="query.orderBy!=null">
-			ORDER BY #{query.orderBy}
+			ORDER BY ${query.orderBy}
 		</if>
 		<if test="query.simplePage!=null">
 			LIMIT #{query.simplePage.start}, #{query.simplePage.end}

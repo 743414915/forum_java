@@ -18,10 +18,10 @@
 	<!--基础查询条件-->
 	<sql id="base_query_condition">
 		<if test="query.code != null and query.code != null">
-			and id = #{query.code}
+			and code = #{query.code}
 		</if>
 		<if test="query.jsonContent != null and query.jsonContent != null">
-			and id = #{query.jsonContent}
+			and json_content = #{query.jsonContent}
 		</if>
 	</sql>
 
@@ -50,7 +50,7 @@
 			FROM sys_setting
 		<include refid="query_condition"/>
 		<if test="query.orderBy!=null">
-			ORDER BY #{query.orderBy}
+			ORDER BY ${query.orderBy}
 		</if>
 		<if test="query.simplePage!=null">
 			LIMIT #{query.simplePage.start}, #{query.simplePage.end}

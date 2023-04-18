@@ -36,37 +36,37 @@
     <!--基础查询条件-->
     <sql id="base_query_condition">
         <if test="query.messageId != null">
-            and id = #{query.messageId}
+            and message_id = #{query.messageId}
         </if>
         <if test="query.receivedUserId != null and query.receivedUserId != null">
-            and id = #{query.receivedUserId}
+            and received_user_id = #{query.receivedUserId}
         </if>
         <if test="query.articleId != null and query.articleId != null">
-            and id = #{query.articleId}
+            and article_id = #{query.articleId}
         </if>
         <if test="query.articleTitle != null and query.articleTitle != null">
-            and id = #{query.articleTitle}
+            and article_title = #{query.articleTitle}
         </if>
         <if test="query.commentId != null">
-            and id = #{query.commentId}
+            and comment_id = #{query.commentId}
         </if>
         <if test="query.sendUserId != null and query.sendUserId != null">
-            and id = #{query.sendUserId}
+            and send_user_id = #{query.sendUserId}
         </if>
         <if test="query.sendNickName != null and query.sendNickName != null">
-            and id = #{query.sendNickName}
+            and send_nick_name = #{query.sendNickName}
         </if>
         <if test="query.messageType != null">
-            and id = #{query.messageType}
+            and message_type = #{query.messageType}
         </if>
         <if test="query.messageContent != null and query.messageContent != null">
-            and id = #{query.messageContent}
+            and message_content = #{query.messageContent}
         </if>
         <if test="query.status != null">
-            and id = #{query.status}
+            and status = #{query.status}
         </if>
         <if test="query.createTime != null">
-            and id = #{query.createTime}
+            and create_time = #{query.createTime}
         </if>
     </sql>
 
@@ -113,7 +113,7 @@
         FROM user_message
         <include refid="query_condition"/>
         <if test="query.orderBy!=null">
-            ORDER BY #{query.orderBy}
+            ORDER BY ${query.orderBy}
         </if>
         <if test="query.simplePage!=null">
             LIMIT #{query.simplePage.start}, #{query.simplePage.end}

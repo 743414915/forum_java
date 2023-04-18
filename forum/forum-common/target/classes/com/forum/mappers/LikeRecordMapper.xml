@@ -26,22 +26,22 @@
 	<!--基础查询条件-->
 	<sql id="base_query_condition">
 		<if test="query.opId != null">
-			and id = #{query.opId}
+			and op_id = #{query.opId}
 		</if>
 		<if test="query.opType != null">
-			and id = #{query.opType}
+			and op_type = #{query.opType}
 		</if>
 		<if test="query.objectId != null and query.objectId != null">
-			and id = #{query.objectId}
+			and object_id = #{query.objectId}
 		</if>
 		<if test="query.userId != null and query.userId != null">
-			and id = #{query.userId}
+			and user_id = #{query.userId}
 		</if>
 		<if test="query.createTime != null">
-			and id = #{query.createTime}
+			and create_time = #{query.createTime}
 		</if>
 		<if test="query.authorUserId != null and query.authorUserId != null">
-			and id = #{query.authorUserId}
+			and author_user_id = #{query.authorUserId}
 		</if>
 	</sql>
 
@@ -79,7 +79,7 @@
 			FROM like_record
 		<include refid="query_condition"/>
 		<if test="query.orderBy!=null">
-			ORDER BY #{query.orderBy}
+			ORDER BY ${query.orderBy}
 		</if>
 		<if test="query.simplePage!=null">
 			LIMIT #{query.simplePage.start}, #{query.simplePage.end}
