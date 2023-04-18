@@ -7,6 +7,7 @@ import com.forum.entity.query.UserInfoQuery;
 import com.forum.entity.vo.PaginationResultVO;
 import com.forum.enums.UserIntegralOperTypeEnum;
 import com.forum.exception.BusinessException;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -99,4 +100,6 @@ public interface UserInfoService {
     SessionWebUserDto login(String email, String password, String ip) throws BusinessException;
 
     void resetPwd(String email, String password, String emailCode) throws BusinessException;
+
+    void updateUserInfo(UserInfo userInfo, MultipartFile avatar) throws BusinessException;
 }

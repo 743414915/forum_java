@@ -83,7 +83,6 @@ public class UserInfo implements Serializable {
 	/**
 	 * 0:禁用 1:正常
  	 */
-	@JsonIgnore
 	private Integer status;
 
 	public void setUserId(String userId) {

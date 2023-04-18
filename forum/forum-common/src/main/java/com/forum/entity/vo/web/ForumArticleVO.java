@@ -115,7 +115,6 @@ public class ForumArticleVO implements Serializable {
     /**
      * -1已删除 0:待审核  1:已审核
      */
-    @JsonIgnore
     private Integer status;
 
     public Integer getEditorType() {

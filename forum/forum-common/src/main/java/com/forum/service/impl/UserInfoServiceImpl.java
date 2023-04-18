@@ -18,16 +18,14 @@ import com.forum.mappers.UserIntegralRecordMapper;
 import com.forum.mappers.UserMessageMapper;
 import com.forum.service.EmailCodeService;
 import com.forum.service.UserInfoService;
-import com.forum.utils.JsonUtils;
-import com.forum.utils.OKHttpUtils;
-import com.forum.utils.StringTools;
-import com.forum.utils.SysCacheUtils;
+import com.forum.utils.*;
 import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -61,6 +59,9 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Resource
     private WebConfig webConfig;
+
+    @Resource
+    private FileUtils fileUtils;
 
     /**
      * 根据条件查询列表
@@ -310,5 +311,13 @@ public class UserInfoServiceImpl implements UserInfoService {
         UserInfo updateInfo = new UserInfo();
         updateInfo.setPassword(StringTools.encodeMd5(password));
         this.userInfoMapper.updateByEmail(updateInfo, email);
+    }
+
+    @Override
+    public void updateUserInfo(UserInfo userInfo, MultipartFile avatar) throws BusinessException {
+        userInfoMapper.updateByUserId(userInfo, userInfo.getUserId());
+        if (avatar != null) {
+            fileUtils.uploadFile2Local(avatar, userInfo.getUserId(), FileUploadTypeEnum.AVATAR);
+        }
     }
 }

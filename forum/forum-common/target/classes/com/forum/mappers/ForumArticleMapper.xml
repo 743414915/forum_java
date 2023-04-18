@@ -173,8 +173,17 @@
             <![CDATA[ and last_update_time < date_sub(str_to_date(#{query.lastUpdateTimeEnd}, '%Y-%m-%d'),interval -1 day) ]]>
         </if>
         <!--		查询待审核的-->
-        <if test="query.currentUserId!=null">
+        <if test="query.currentUserId != null">
             and (status=1 or (status=0 and user_id=#{query.currentUserId}))
+        </if>
+        <!--        查询评论-->
+        <if test="query.commentUserId != null and query.commentUserId != ''">
+            and article_id in(select article_id from forum_comment where user_if = #{query.commentUserId})
+            and status = 1
+        </if>
+        <!--        查询点赞-->
+        <if test="query.likeUserId != null and query.likeUserId != ''">
+            and article_id in(select object_id from like_record where user_if = #{query.likeUserId} and op_type = 0)
         </if>
     </sql>
 
@@ -192,9 +201,9 @@
         <include refid="base_column_list"/>
         FROM forum_article
         <include refid="query_condition"/>
-         <if test="query.orderBy!=null">
+        <if test="query.orderBy!=null">
             ORDER BY ${query.orderBy}
-         </if>
+        </if>
         <if test="query.simplePage!=null">
             LIMIT #{query.simplePage.start}, #{query.simplePage.end}
         </if>

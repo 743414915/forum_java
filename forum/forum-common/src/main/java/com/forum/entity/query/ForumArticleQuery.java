@@ -150,6 +150,26 @@ public class ForumArticleQuery extends BaseQuery {
 
     private String currentUserId;
 
+    private String likeUserId;
+
+    private String commentUserId;
+
+    public String getLikeUserId() {
+        return likeUserId;
+    }
+
+    public void setLikeUserId(String likeUserId) {
+        this.likeUserId = likeUserId;
+    }
+
+    public String getCommentUserId() {
+        return commentUserId;
+    }
+
+    public void setCommentUserId(String commentUserId) {
+        this.commentUserId = commentUserId;
+    }
+
     public Integer getpBoardId() {
         return pBoardId;
     }

@@ -329,4 +329,14 @@ public class ForumArticleController extends ABaseController {
 
         return getSuccessResponseVO(forumArticle.getArticleId());
     }
+
+    @RequestMapping("/search")
+    @GlobalInterceptor(checkParams = true)
+    public ResponseVO search(HttpSession session, @VerifyParam(required = true) String keyword) {
+        ForumArticleQuery query = new ForumArticleQuery();
+        query.setTitleFuzzy(keyword);
+
+        PaginationResultVO resultVO = forumArticleService.findListByPage(query);
+        return getSuccessResponseVO(resultVO);
+    }
 }
