@@ -48,7 +48,7 @@ public class UserIntegralRecord implements Serializable {
 
     public String getOperTypeName() {
         UserIntegralOperTypeEnum operTypeEnum = UserIntegralOperTypeEnum.getByType(operType);
-        return operTypeName == null ? "" : operTypeEnum.getDesc();
+        return operTypeEnum == null ? "" : operTypeEnum.getDesc();
     }
 
     public void setOperTypeName(String operTypeName) {
