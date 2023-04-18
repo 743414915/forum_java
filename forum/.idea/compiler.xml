@@ -6,10 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="easyJava-demo" />
+        <module name="forum-admin" />
         <module name="easyJava" />
         <module name="forum-web" />
-        <module name="forum-admin" />
+        <module name="easyJava-demo" />
         <module name="forum-common" />
       </profile>
     </annotationProcessing>

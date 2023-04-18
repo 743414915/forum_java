@@ -245,6 +245,7 @@ public class ForumCommentServiceImpl implements ForumCommentService {
         userMessage.setSendNickName(comment.getNickName());
         userMessage.setStatus(MessageStatusEnum.NO_READ.getStatus());
         userMessage.setArticleTitle(forumArticle.getTitle());
+        userMessage.setMessageContent(comment.getContent());
 
         if (comment.getPCommentId() == 0) {
             // 一级评论
@@ -257,7 +258,7 @@ public class ForumCommentServiceImpl implements ForumCommentService {
             userMessage.setReceivedUserId(comment.getReplyUserId());
         }
         //发布人和接收人不是一个人
-        if (comment.getUserId().equals(userMessage.getReceivedUserId())) {
+        if (!comment.getUserId().equals(userMessage.getReceivedUserId())) {
             userMessageService.add(userMessage);
         }
     }

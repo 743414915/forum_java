@@ -61,7 +61,7 @@ public class ForumCommentController extends ABaseController {
 
     @RequestMapping("/doLike")
     @GlobalInterceptor(checkParams = true, checkLogin = true)
-    public ResponseVO loadComment(HttpSession session, @VerifyParam(required = true) Integer commentId) throws BusinessException {
+    public ResponseVO doLike(HttpSession session, @VerifyParam(required = true) Integer commentId) throws BusinessException {
         SessionWebUserDto userDto = getUserInfoFromSession(session);
         String objectId = String.valueOf(commentId);
         likeRecordService.doLike(objectId, userDto.getUserId(), userDto.getNickName(), OperRecordOpTypeEnum.COMMENT_LIKE);

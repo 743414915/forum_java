@@ -172,7 +172,7 @@ public class LikeRecordServiceImpl implements LikeRecordService {
 
                 userMessage.setArticleId(objectId);
                 userMessage.setArticleTitle(forumArticle.getTitle());
-                userMessage.setMessageType(MessageTypeEnum.ARTICLE_LIKE.getType());
+                userMessage.setMessageType(MessageTypeEnum.COMMENT_LIKE.getType());
                 userMessage.setCommentId(forumComment.getCommentId());
                 userMessage.setReceivedUserId(forumComment.getUserId());
                 userMessage.setMessageContent(forumComment.getContent());
