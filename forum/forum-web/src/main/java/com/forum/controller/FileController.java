@@ -7,6 +7,7 @@ import com.forum.entity.config.WebConfig;
 import com.forum.entity.vo.FileVO;
 import com.forum.entity.vo.ResponseVO;
 import com.forum.enums.ResponseCodeEnum;
+import com.forum.enums.UserOperFrequencyTypeEnum;
 import com.forum.exception.BusinessException;
 import com.forum.utils.StringTools;
 import org.apache.commons.lang3.ArrayUtils;
@@ -39,7 +40,7 @@ public class FileController extends ABaseController {
     private WebConfig webConfig;
 
     @RequestMapping("/uploadImage")
-    @GlobalInterceptor(checkLogin = true)
+    @GlobalInterceptor(checkLogin = true, frequencyType = UserOperFrequencyTypeEnum.IMAGE_UPLOAD)
     public ResponseVO uploadImage(MultipartFile file) throws BusinessException {
         if (file == null) {
             throw new BusinessException(ResponseCodeEnum.CODE_600);

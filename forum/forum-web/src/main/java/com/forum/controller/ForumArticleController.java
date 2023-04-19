@@ -134,7 +134,7 @@ public class ForumArticleController extends ABaseController {
 
     // 点赞
     @RequestMapping("/doLike")
-    @GlobalInterceptor(checkLogin = true, checkParams = true)
+    @GlobalInterceptor(checkLogin = true, checkParams = true, frequencyType = UserOperFrequencyTypeEnum.DO_LIKE)
     public ResponseVO doLike(HttpSession session, @VerifyParam(required = true) String articleId) throws BusinessException {
         SessionWebUserDto sessionWebUserDto = getUserInfoFromSession(session);
 
@@ -222,7 +222,7 @@ public class ForumArticleController extends ABaseController {
     }
 
     @RequestMapping("/postArticle")
-    @GlobalInterceptor(checkLogin = true, checkParams = true)
+    @GlobalInterceptor(checkLogin = true, checkParams = true, frequencyType = UserOperFrequencyTypeEnum.POST_ARTICLE)
     public ResponseVO postArticle(HttpSession session,
                                   MultipartFile cover,
                                   MultipartFile attachment,

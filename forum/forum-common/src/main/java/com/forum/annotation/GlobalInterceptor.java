@@ -1,5 +1,7 @@
 package com.forum.annotation;
 
+import com.forum.enums.UserOperFrequencyTypeEnum;
+
 import java.lang.annotation.*;
 
 @Target({ElementType.METHOD, ElementType.TYPE})
@@ -21,4 +23,5 @@ public @interface GlobalInterceptor {
     /**
      * 校验频次
      */
+    UserOperFrequencyTypeEnum frequencyType() default UserOperFrequencyTypeEnum.NO_CHECK;
 }

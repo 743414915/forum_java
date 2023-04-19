@@ -60,7 +60,7 @@ public class ForumCommentController extends ABaseController {
     }
 
     @RequestMapping("/doLike")
-    @GlobalInterceptor(checkParams = true, checkLogin = true)
+    @GlobalInterceptor(checkParams = true, checkLogin = true, frequencyType = UserOperFrequencyTypeEnum.DO_LIKE)
     public ResponseVO doLike(HttpSession session, @VerifyParam(required = true) Integer commentId) throws BusinessException {
         SessionWebUserDto userDto = getUserInfoFromSession(session);
         String objectId = String.valueOf(commentId);
@@ -86,7 +86,7 @@ public class ForumCommentController extends ABaseController {
     }
 
     @RequestMapping("/postComment")
-    @GlobalInterceptor(checkParams = true, checkLogin = true)
+    @GlobalInterceptor(checkParams = true, checkLogin = true, frequencyType = UserOperFrequencyTypeEnum.POST_COMMENT)
     public ResponseVO postComment(HttpSession session,
                                   @VerifyParam(required = true) String articleId,
                                   @VerifyParam(required = true) Integer pCommentId,

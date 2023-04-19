@@ -23,6 +23,7 @@ public class Constants {
     public static final String NO_ADDRESS = "未知";
 
     public static final String SESSION_KEY = "session_key";
+    public static final String SESSION_KEY_FREQUENCY = "session_key_frequency";
 
 
     public static final String FILE_FOLDER_FILE = "/file/";
@@ -37,4 +38,6 @@ public class Constants {
     public static final String READ_IMAGE_PATH = "/api/file/getImage";
 
     public static final String[] IMAGE_SUFFIX = new String[]{".png", ".PNG", ".jpg", ".JPG", ".jpeg", ".JPEG", ".gif", ".GIF", ".bmp", ".BMP"};
+
+    public static final String STATUS_SUCCESS = "status_success";
 }
