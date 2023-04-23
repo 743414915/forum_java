@@ -9,30 +9,26 @@ import com.forum.entity.po.UserMessage;
 import com.forum.entity.query.ForumArticleQuery;
 import com.forum.entity.query.ForumCommentQuery;
 import com.forum.entity.query.SimplePage;
-import com.forum.entity.query.UserInfoQuery;
 import com.forum.entity.vo.PaginationResultVO;
 import com.forum.enums.*;
 import com.forum.exception.BusinessException;
 import com.forum.mappers.ForumArticleMapper;
 import com.forum.mappers.ForumCommentMapper;
-import com.forum.mappers.UserInfoMapper;
 import com.forum.service.ForumCommentService;
 import com.forum.service.UserInfoService;
 import com.forum.service.UserMessageService;
 import com.forum.utils.FileUtils;
 import com.forum.utils.StringTools;
 import com.forum.utils.SysCacheUtils;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 ;
@@ -59,6 +55,10 @@ public class ForumCommentServiceImpl implements ForumCommentService {
 
     @Resource
     private FileUtils fileUtils;
+
+    @Resource
+    @Lazy
+    private ForumCommentService forumCommentService;
 
     /**
      * 根据条件查询列表
@@ -261,5 +261,70 @@ public class ForumCommentServiceImpl implements ForumCommentService {
         if (!comment.getUserId().equals(userMessage.getReceivedUserId())) {
             userMessageService.add(userMessage);
         }
+    }
+
+    @Override
+    public void delComment(String commentIds) throws BusinessException {
+        String[] commentIdArray = commentIds.split(",");
+        for (String commentIdStr : commentIdArray) {
+            Integer commentId = Integer.parseInt(commentIdStr);
+            forumCommentService.delCommentSingle(commentId);
+        }
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void delCommentSingle(Integer commentId) throws BusinessException {
+
+        ForumComment comment = forumCommentMapper.selectByCommentId(commentId);
+        if (null == comment || CommentStatusEnum.DEL.getStatus().equals(comment.getStatus())) {
+            return;
+        }
+        ForumComment forumComment = new ForumComment();
+        forumComment.setStatus(CommentStatusEnum.DEL.getStatus());
+        forumCommentMapper.updateByCommentId(forumComment, commentId);
+
+        // 删除已经审核的文章，更新文章数量
+        if (CommentStatusEnum.AUDIT.getStatus().equals(comment.getStatus())) {
+            if (comment.getPCommentId() == 0) {
+                forumArticleMapper.updateArticleCount(UpdateArticleCountTypeEnum.COMMENT_COUNT.getType(), Constants.NEGATIVE_ONE, comment.getArticleId());
+            }
+            Integer integral = SysCacheUtils.getSysSetting().getPostSetting().getPostIntegral();
+            userInfoService.updateUserIntegral(comment.getUserId(), UserIntegralOperTypeEnum.DEL_COMMENT, UserIntegralChangeTypeEnum.REDUCE.getChangeType(), integral);
+        }
+        UserMessage userMessage = new UserMessage();
+        userMessage.setReceivedUserId(comment.getUserId());
+        userMessage.setMessageType(MessageTypeEnum.SYS.getType());
+        userMessage.setCreateTime(new Date());
+        userMessage.setStatus(MessageStatusEnum.NO_READ.getStatus());
+        userMessage.setMessageContent("评论【" + comment.getContent() + "】已被管理员删除");
+        userMessageService.add(userMessage);
+    }
+
+    @Override
+    public void auditComment(String commentIds) throws BusinessException {
+        String[] commentIdArray = commentIds.split(",");
+        for (String commentIdStr : commentIdArray) {
+            Integer commentId = Integer.parseInt(commentIdStr);
+            forumCommentService.auditCommentSingle(commentId);
+        }
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void auditCommentSingle(Integer commentId) throws BusinessException {
+        ForumComment comment = forumCommentMapper.selectByCommentId(commentId);
+        if (!CommentStatusEnum.NO_AUDIT.getStatus().equals(comment.getStatus())) {
+            return;
+        }
+        ForumComment forumComment = new ForumComment();
+        forumComment.setStatus(comment.getStatus());
+        forumCommentMapper.updateByCommentId(comment, commentId);
+        ForumArticle forumArticle = forumArticleMapper.selectByArticleId(comment.getArticleId());
+        ForumComment pComment = null;
+        if (comment.getPCommentId() != 0 && StringTools.isEmpty(comment.getReplyUserId())) {
+            pComment = forumCommentMapper.selectByCommentId(comment.getPCommentId());
+        }
+        updateCommentInfo(comment, forumArticle, pComment);
     }
 }

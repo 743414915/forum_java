@@ -1,5 +1,7 @@
 package com.forum.entity.dto;
 
+import com.forum.annotation.VerifyParam;
+
 /**
  * 注册设置
  */
@@ -8,7 +10,7 @@ public class SysSetting4RegisterDto {
     /**
      * 注册欢迎语
      */
-//    @VerifyParam(required = true)
+    @VerifyParam(required = true)
     private String registerWelcomInfo;
 
     public String getRegisterWelcomInfo() {

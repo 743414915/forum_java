@@ -64,4 +64,12 @@ public interface ForumCommentService {
     void changeTopType(String userId, Integer commentId, Integer topType) throws BusinessException;
 
     void postComment(ForumComment comment, MultipartFile image) throws BusinessException;
+
+    void delComment(String commentIds) throws BusinessException;
+
+    void delCommentSingle(Integer commentId) throws BusinessException;
+
+    void auditComment(String commentIds) throws BusinessException;
+
+    void auditCommentSingle(Integer commentId) throws BusinessException;
 }

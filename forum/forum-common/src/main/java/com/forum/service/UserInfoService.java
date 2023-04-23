@@ -102,4 +102,8 @@ public interface UserInfoService {
     void resetPwd(String email, String password, String emailCode) throws BusinessException;
 
     void updateUserInfo(UserInfo userInfo, MultipartFile avatar) throws BusinessException;
+
+    void updateUserStatus(Integer status, String userId);
+
+    void sendMessage(String userId, String message, Integer integral) throws BusinessException;
 }

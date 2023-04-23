@@ -8,6 +8,7 @@ import com.forum.entity.dto.SysSettingDto;
 import com.forum.entity.po.ForumArticle;
 import com.forum.entity.po.ForumArticleAttachment;
 import com.forum.entity.po.ForumBoard;
+import com.forum.entity.po.UserMessage;
 import com.forum.entity.query.ForumArticleAttachmentQuery;
 import com.forum.entity.query.ForumArticleQuery;
 import com.forum.entity.query.SimplePage;
@@ -19,11 +20,14 @@ import com.forum.mappers.ForumArticleMapper;
 import com.forum.service.ForumArticleService;
 import com.forum.service.ForumBoardService;
 import com.forum.service.UserInfoService;
+import com.forum.service.UserMessageService;
 import com.forum.utils.FileUtils;
 import com.forum.utils.ImageUtils;
 import com.forum.utils.StringTools;
 import com.forum.utils.SysCacheUtils;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -61,6 +65,13 @@ public class ForumArticleServiceImpl implements ForumArticleService {
 
     @Resource
     private AppConfig appConfig;
+
+    @Lazy
+    @Resource
+    private ForumArticleService forumArticleService;
+
+    @Resource
+    private UserMessageService userMessageService;
 
     /**
      * 根据条件查询列表
@@ -322,5 +333,71 @@ public class ForumArticleServiceImpl implements ForumArticleService {
             forumArticleAttachmentMapper.updateByFileId(updateInfo, dbinfo.getFileId());
         }
 
+    }
+
+    @Override
+    public void delArticle(String articleIds) throws BusinessException {
+        String[] articleIdArray = articleIds.split(",");
+        for (String articleId : articleIdArray) {
+            forumArticleService.delArticleSignle(articleId);
+        }
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void delArticleSignle(String articleId) throws BusinessException {
+        ForumArticle article = getForumArticleByArticleId(articleId);
+        if (article == null || ArticleStatusEnum.DEL.getStatus().equals(article.getStatus())) {
+            return;
+        }
+        ForumArticle updateInfo = new ForumArticle();
+        updateInfo.setStatus(ArticleStatusEnum.DEL.getStatus());
+        forumArticleMapper.updateByArticleId(updateInfo, articleId);
+
+        Integer integral = SysCacheUtils.getSysSetting().getPostSetting().getPostIntegral();
+        if (integral > 0 && ArticleStatusEnum.AUDIT.getStatus().equals(article.getStatus())) {
+            userInfoService.updateUserIntegral(article.getUserId(), UserIntegralOperTypeEnum.DEL_ARTICLE, UserIntegralChangeTypeEnum.REDUCE.getChangeType(), integral);
+        }
+
+        UserMessage userMessage = new UserMessage();
+        userMessage.setReceivedUserId(article.getUserId());
+        userMessage.setMessageType(MessageTypeEnum.SYS.getType());
+        userMessage.setCreateTime(new Date());
+        userMessage.setStatus(MessageStatusEnum.NO_READ.getStatus());
+        userMessage.setMessageContent("文章【" + article.getTitle() + "】被管理员删除");
+        userMessageService.add(userMessage);
+    }
+
+    @Override
+    public void updateBoard(String articleId, Integer pBoardId, Integer boardId) throws BusinessException {
+        ForumArticle forumArticle = new ForumArticle();
+        forumArticle.setBoardId(boardId);
+        forumArticle.setPBoardId(pBoardId);
+        resetBoardInfo(true, forumArticle);
+        forumArticleMapper.updateByArticleId(forumArticle, articleId);
+    }
+
+    @Override
+    public void auditArticle(String articleIds) throws BusinessException {
+        String[] articleIdArray = articleIds.split(",");
+        for (String articleId : articleIdArray) {
+            forumArticleService.auditArticleSignle(articleId);
+        }
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void auditArticleSignle(String articleId) throws BusinessException {
+        ForumArticle article = getForumArticleByArticleId(articleId);
+        if (article == null || ArticleStatusEnum.NO_AUDIT.getStatus().equals(article.getStatus())) {
+            return;
+        }
+        ForumArticle updateInfo = new ForumArticle();
+        updateInfo.setStatus(ArticleStatusEnum.AUDIT.getStatus());
+        forumArticleMapper.updateByArticleId(updateInfo, articleId);
+
+        Integer integral = SysCacheUtils.getSysSetting().getPostSetting().getPostIntegral();
+        if (integral > 0 && ArticleStatusEnum.AUDIT.getStatus().equals(article.getStatus())) {
+            userInfoService.updateUserIntegral(article.getUserId(), UserIntegralOperTypeEnum.POST_ARTICLE, UserIntegralChangeTypeEnum.ADD.getChangeType(), integral);
+        }
     }
 }

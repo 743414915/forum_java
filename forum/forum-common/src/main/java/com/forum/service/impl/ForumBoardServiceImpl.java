@@ -1,13 +1,18 @@
 package com.forum.service.impl;
 
+import com.forum.entity.po.ForumArticle;
 import com.forum.entity.po.ForumBoard;
+import com.forum.entity.query.ForumArticleQuery;
 import com.forum.entity.query.ForumBoardQuery;
 import com.forum.entity.query.SimplePage;
 import com.forum.entity.vo.PaginationResultVO;
 import com.forum.enums.PageSize;
+import com.forum.exception.BusinessException;
+import com.forum.mappers.ForumArticleMapper;
 import com.forum.mappers.ForumBoardMapper;
 import com.forum.service.ForumBoardService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -25,6 +30,9 @@ public class ForumBoardServiceImpl implements ForumBoardService {
 
     @Resource
     private ForumBoardMapper<ForumBoard, ForumBoardQuery> forumBoardMapper;
+
+    @Resource
+    private ForumArticleMapper<ForumArticle, ForumArticleQuery> forumArticleMapper;
 
     /**
      * 根据条件查询列表
@@ -121,5 +129,41 @@ public class ForumBoardServiceImpl implements ForumBoardService {
             }
         }
         return children;
+    }
+
+    @Override
+    public void saveForumBoard(ForumBoard forumBoard) throws BusinessException {
+        if (forumBoard.getBoardId() == null) {
+            // 新增
+            ForumBoardQuery query = new ForumBoardQuery();
+            query.setPBoardId(forumBoard.getPBoardId());
+            Integer count = this.forumBoardMapper.selectCount(query);
+            forumBoard.setSort(count + 1);
+            this.forumBoardMapper.insert(forumBoard);
+        } else {
+            // 修改
+            ForumBoard dbInfo = this.forumBoardMapper.selectByBoardId(forumBoard.getBoardId());
+            if (dbInfo == null) {
+                throw new BusinessException("板块信息不存在");
+            }
+            this.forumBoardMapper.updateByBoardId(forumBoard, forumBoard.getBoardId());
+            if (!dbInfo.getBoardName().equals(forumBoard.getBoardName())) {
+                forumArticleMapper.updateBoardNameBatch(dbInfo.getPBoardId() == 0 ? 0 : 1, forumBoard.getBoardName(), forumBoard.getBoardId());
+            }
+        }
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void changeBoardSort(String boardIds) {
+        String[] boardIdArray = boardIds.split(",");
+        Integer index = 1;
+        for (String boardIdStr : boardIdArray) {
+            Integer boardId = Integer.parseInt(boardIdStr);
+            ForumBoard board = new ForumBoard();
+            board.setSort(index);
+            forumBoardMapper.updateByBoardId(board, boardId);
+            index++;
+        }
     }
 }

@@ -1,5 +1,7 @@
 package com.forum.entity.dto;
 
+import com.forum.annotation.VerifyParam;
+
 /**
  * 发帖设置
  */
@@ -8,25 +10,25 @@ public class SysSetting4PostDto {
     /**
      * 发帖积分
      */
-    //    @VerifyParam(required = true)
+        @VerifyParam(required = true)
     private Integer postIntegral;
 
     /**
      * 一天发帖数量
      */
-    //    @VerifyParam(required = true)
+        @VerifyParam(required = true)
     private Integer postDayCountThreshold;
 
     /**
      * 每天上传图片数量
      */
-    //    @VerifyParam(required = true)
+        @VerifyParam(required = true)
     private Integer dayImageUploadCount;
 
     /**
      * 附件大小  单位 MB
      */
-    //    @VerifyParam(required = true)
+        @VerifyParam(required = true)
     private Integer attachmentSize;
 
     public Integer getPostIntegral() {

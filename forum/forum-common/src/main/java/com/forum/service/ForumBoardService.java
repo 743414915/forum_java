@@ -4,6 +4,7 @@ package com.forum.service;
 import com.forum.entity.po.ForumBoard;
 import com.forum.entity.query.ForumBoardQuery;
 import com.forum.entity.vo.PaginationResultVO;
+import com.forum.exception.BusinessException;
 
 import java.util.List;
 
@@ -60,4 +61,8 @@ public interface ForumBoardService {
     Integer deleteForumBoardByBoardId(Integer boardId);
 
     List<ForumBoard> getBoardTree(Integer postType);
+
+    void saveForumBoard(ForumBoard forumBoard) throws BusinessException;
+
+    void changeBoardSort(String boardIds);
 }

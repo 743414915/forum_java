@@ -63,7 +63,7 @@ public class OKHttpUtils {
         return builder;
     }
 
-    public static String getRequest(String url) throws Throwable {
+    public static String getRequest(String url) throws BusinessException {
         ResponseBody responseBody = null;
 
         try {
@@ -88,7 +88,7 @@ public class OKHttpUtils {
         }
     }
 
-    public static String postRequest(String url, Map<String, String> header, Map<String, String> params) throws Throwable {
+    public static String postRequest(String url, Map<String, String> header, Map<String, String> params) throws BusinessException {
         ResponseBody responseBody = null;
 
         try {

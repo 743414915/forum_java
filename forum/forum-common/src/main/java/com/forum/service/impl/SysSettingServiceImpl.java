@@ -9,6 +9,7 @@ import com.forum.entity.query.SysSettingQuery;
 import com.forum.entity.vo.PaginationResultVO;
 import com.forum.enums.PageSize;
 import com.forum.enums.SysSettingCodeEnum;
+import com.forum.exception.BusinessException;
 import com.forum.mappers.SysSettingMapper;
 import com.forum.service.SysSettingService;
 import com.forum.utils.JsonUtils;
@@ -17,6 +18,7 @@ import com.forum.utils.SysCacheUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.beans.PropertyDescriptor;
@@ -118,7 +120,7 @@ public class SysSettingServiceImpl implements SysSettingService {
      * 刷新缓存
      */
     @Override
-    public void refreshCache() {
+    public SysSettingDto refreshCache() throws BusinessException {
         try {
             SysSettingDto sysSettingDto = new SysSettingDto();
             List<SysSetting> list = this.sysSettingMapper.selectList(new SysSettingQuery());
@@ -140,8 +142,31 @@ public class SysSettingServiceImpl implements SysSettingService {
             logger.info(JsonUtils.convertObj2Json(sysSettingDto));
 
             SysCacheUtils.refresh(sysSettingDto);
+            return sysSettingDto;
         } catch (Exception e) {
             logger.error("刷新缓存失败", e);
+            throw new BusinessException("刷新缓存失败");
+        }
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void saveSetting(SysSettingDto sysSettingDto) throws BusinessException {
+        try {
+            Class classz = SysSettingDto.class;
+            for (SysSettingCodeEnum codeEnum : SysSettingCodeEnum.values()) {
+                PropertyDescriptor pd = new PropertyDescriptor(codeEnum.getPropName(), classz);
+                Method method = pd.getWriteMethod();
+                Object obj = method.invoke(sysSettingDto);
+                SysSetting sysSetting = new SysSetting();
+                sysSetting.setCode(codeEnum.getCode());
+                sysSetting.setJsonContent(JsonUtils.convertObj2Json(obj));
+                this.sysSettingMapper.insertOrUpdate(sysSetting);
+            }
+
+        } catch (Exception e) {
+            logger.error("保存设置失败", e);
+            throw new BusinessException("保存设置失败");
         }
     }
 }

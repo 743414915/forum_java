@@ -1,5 +1,7 @@
 package com.forum.entity.dto;
 
+import com.forum.annotation.VerifyParam;
+
 /**
  * 发送邮件设置
  */
@@ -8,13 +10,13 @@ public class SysSetting4EmailDto {
     /**
      * 邮件标题
      */
-//    @VerifyParam(required = true)
+    @VerifyParam(required = true)
     private  String emailTitle;
 
     /**
      * 邮件内容
      */
-//    @VerifyParam(required = true)
+    @VerifyParam(required = true)
     private String emailContent;
 
     public String getEmailTitle() {

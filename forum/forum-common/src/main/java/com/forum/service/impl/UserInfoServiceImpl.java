@@ -3,21 +3,15 @@ package com.forum.service.impl;
 import com.forum.constants.Constants;
 import com.forum.entity.config.WebConfig;
 import com.forum.entity.dto.SessionWebUserDto;
-import com.forum.entity.po.UserInfo;
-import com.forum.entity.po.UserIntegralRecord;
-import com.forum.entity.po.UserMessage;
-import com.forum.entity.query.SimplePage;
-import com.forum.entity.query.UserInfoQuery;
-import com.forum.entity.query.UserIntegralRecordQuery;
-import com.forum.entity.query.UserMessageQuery;
+import com.forum.entity.po.*;
+import com.forum.entity.query.*;
 import com.forum.entity.vo.PaginationResultVO;
 import com.forum.enums.*;
 import com.forum.exception.BusinessException;
-import com.forum.mappers.UserInfoMapper;
-import com.forum.mappers.UserIntegralRecordMapper;
-import com.forum.mappers.UserMessageMapper;
+import com.forum.mappers.*;
 import com.forum.service.EmailCodeService;
 import com.forum.service.UserInfoService;
+import com.forum.service.UserMessageService;
 import com.forum.utils.*;
 import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
@@ -62,6 +56,15 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Resource
     private FileUtils fileUtils;
+
+    @Resource
+    private ForumArticleMapper<ForumArticle, ForumArticleQuery> forumArticleMapper;
+
+    @Resource
+    private ForumCommentMapper<ForumComment, ForumCommentQuery> forumCommentMapper;
+
+    @Resource
+    private UserMessageService userMessageService;
 
     /**
      * 根据条件查询列表
@@ -318,6 +321,38 @@ public class UserInfoServiceImpl implements UserInfoService {
         userInfoMapper.updateByUserId(userInfo, userInfo.getUserId());
         if (avatar != null) {
             fileUtils.uploadFile2Local(avatar, userInfo.getUserId(), FileUploadTypeEnum.AVATAR);
+        }
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void updateUserStatus(Integer status, String userId) {
+        if (UserStatusEnum.DISABLE.getStatus().equals(status)) {
+            this.forumArticleMapper.updateStatusBatchByUserId(ArticleStatusEnum.DEL.getStatus(), userId);
+            this.forumCommentMapper.updateStatusBatchByUserId(CommentStatusEnum.DEL.getStatus(), userId);
+        }
+        UserInfo userInfo = new UserInfo();
+        userInfo.setStatus(status);
+        userInfoMapper.updateByUserId(userInfo, userId);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void sendMessage(String userId, String message, Integer integral) throws BusinessException {
+        UserMessage userMessage = new UserMessage();
+        userMessage.setSendUserId(userId);
+        userMessage.setMessageType(MessageTypeEnum.SYS.getType());
+        userMessage.setCreateTime(new Date());
+        userMessage.setStatus(MessageStatusEnum.NO_READ.getStatus());
+        userMessage.setMessageContent(message);
+        userMessageService.add(userMessage);
+        UserIntegralChangeTypeEnum changeTypeEnum = UserIntegralChangeTypeEnum.ADD;
+        if (integral != null && !integral.equals(Constants.ZERO)) {
+            if (integral < Constants.ZERO) {
+                integral = integral * Constants.NEGATIVE_ONE;
+                changeTypeEnum = UserIntegralChangeTypeEnum.REDUCE;
+            }
+            updateUserIntegral(userId, UserIntegralOperTypeEnum.ADMIN, changeTypeEnum.getChangeType(), integral);
         }
     }
 }

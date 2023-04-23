@@ -36,6 +36,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.Date;
@@ -212,8 +213,24 @@ public class OperactionAspect {
         }
     }
 
-    private void checkObjValue(Parameter parameter, Object value) {
-
+    private void checkObjValue(Parameter parameter, Object value) throws BusinessException {
+        try {
+            String typeName = parameter.getParameterizedType().getTypeName();
+            Class classz = Class.forName(typeName);
+            Field[] files = classz.getDeclaredFields();
+            for (Field field : files) {
+                VerifyParam fieldVerifyParam = field.getAnnotation(VerifyParam.class);
+                if (fieldVerifyParam == null) {
+                    continue;
+                }
+                field.setAccessible(true);
+                Object resultValue = field.get(value);
+                checkValue(resultValue, fieldVerifyParam);
+            }
+        } catch (Exception e) {
+            logger.error("校验参数失败", e);
+            throw new BusinessException(ResponseCodeEnum.CODE_600);
+        }
     }
 
     private void checkValue(Object value, VerifyParam verifyParam) throws BusinessException {

@@ -20,18 +20,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a883bd95-44e4-49df-b57f-3dd3883f35df" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/enums/UserOperFrequencyTypeEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forum-web/src/main/java/com/forum/controller/api/InnerApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/annotation/GlobalInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/annotation/GlobalInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/constants/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/constants/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-admin/src/main/java/com/forum/InitRun.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-admin/src/main/java/com/forum/aspect/OperactionAspect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-admin/src/main/java/com/forum/controller/AccountController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-admin/src/main/java/com/forum/controller/FileController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-admin/src/main/java/com/forum/controller/ForumArticleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-admin/src/main/java/com/forum/controller/ForumBoardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-admin/src/main/java/com/forum/controller/SysSettingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-admin/src/main/java/com/forum/controller/UserInfoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-admin/src/main/java/com/forum/controller/base/ABaseController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-admin/src/main/java/com/forum/controller/base/AGlobalExceptionHandlerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-admin/src/main/java/com/forum/interceptor/AppInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-admin/src/main/java/com/forum/interceptor/WebAppConfigurer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/entity/config/AdminConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/entity/dto/SessionAdminUserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forum-web/src/main/java/com/forum/controller/SysSettingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-admin/src/main/java/com/forum/ForumAdminApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-admin/src/main/java/com/forum/ForumAdminApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-admin/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/forum-admin/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-admin/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/forum-admin/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/entity/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/entity/config/AppConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/entity/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/entity/config/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/enums/ResponseCodeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/enums/ResponseCodeEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forum-common/target/classes/META-INF/forum-common.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/entity/dto/SysSetting4AuditDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/entity/dto/SysSetting4AuditDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/entity/dto/SysSetting4CommentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/entity/dto/SysSetting4CommentDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/entity/dto/SysSetting4EmailDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/entity/dto/SysSetting4EmailDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/entity/dto/SysSetting4LikeDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/entity/dto/SysSetting4LikeDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/entity/dto/SysSetting4PostDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/entity/dto/SysSetting4PostDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/entity/dto/SysSetting4RegisterDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/entity/dto/SysSetting4RegisterDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/mappers/ForumArticleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/mappers/ForumArticleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/mappers/ForumCommentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/mappers/ForumCommentMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/ForumArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/ForumArticleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/ForumBoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/ForumBoardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/ForumCommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/ForumCommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/SysSettingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/SysSettingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/UserInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/UserInfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/impl/ForumArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/impl/ForumArticleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/impl/ForumBoardServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/impl/ForumBoardServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/impl/ForumCommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/impl/ForumCommentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/impl/SysSettingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/impl/SysSettingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/impl/UserInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/service/impl/UserInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/utils/OKHttpUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/java/com/forum/utils/OKHttpUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/resources/com/forum/mappers/ForumArticleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/resources/com/forum/mappers/ForumArticleMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/src/main/resources/com/forum/mappers/ForumCommentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/src/main/resources/com/forum/mappers/ForumCommentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/target/classes/com/forum/mappers/ForumArticleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/target/classes/com/forum/mappers/ForumArticleMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-common/target/classes/com/forum/mappers/ForumCommentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/forum-common/target/classes/com/forum/mappers/ForumCommentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum-web/src/main/java/com/forum/InitRun.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-web/src/main/java/com/forum/InitRun.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/forum-web/src/main/java/com/forum/aspect/OperactionAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-web/src/main/java/com/forum/aspect/OperactionAspect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forum-web/src/main/java/com/forum/controller/ForumArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/forum-web/src/main/java/com/forum/controller/ForumArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forum-web/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/forum-web/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forum-web/target/classes/META-INF/forum-web.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/forum-web/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/forum-web/target/classes/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +129,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/forum-common/src/main/resources/com/forum" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/forum-admin/src/main/java/com/forum/controller" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -113,16 +146,17 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\java1\java3\forum\forum_java\forum\forum-admin\src\main\java\com\forum\controller" />
       <recent name="E:\java1\java3\forum\forum_java\forum\forum-common\src\main\resources\com\forum" />
       <recent name="E:\java1\java3\forum\forum_java\forum\forum-common\src\main\java\com\forum\service\impl" />
       <recent name="E:\java1\java3\forum\forum_java\forum\forum-common\src\main\java\com\forum\service" />
       <recent name="E:\java1\java3\forum\forum_java\forum\forum-common\src\main\java\com\forum" />
-      <recent name="E:\java1\java3\forum\forum_java\forum\forum-common\src\main\java\com\forum\entity" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.forum.controller" />
+      <recent name="com.forum.aspect" />
       <recent name="com.forum.enums" />
       <recent name="common.easyjava.builder" />
-      <recent name="com.forum.controller" />
       <recent name="com.forum" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -305,7 +339,10 @@
       <workItem from="1681784209568" duration="289000" />
       <workItem from="1681793453036" duration="5783000" />
       <workItem from="1681807653434" duration="7259000" />
-      <workItem from="1681866100693" duration="4524000" />
+      <workItem from="1681866100693" duration="7780000" />
+      <workItem from="1681892622305" duration="4227000" />
+      <workItem from="1681902270080" duration="5539000" />
+      <workItem from="1681993444423" duration="1368000" />
     </task>
     <servers />
   </component>
@@ -333,14 +370,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="663" y="309" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679821088077" />
-    <state x="765" y="196" key="#com.intellij.ide.util.MemberChooser" timestamp="1681888462059">
+    <state x="765" y="196" key="#com.intellij.ide.util.MemberChooser" timestamp="1681906782241">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="196" key="#com.intellij.ide.util.MemberChooser/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681888462059" />
+    <state x="765" y="196" key="#com.intellij.ide.util.MemberChooser/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681906782241" />
     <state x="548" y="436" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1679199052248">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="548" y="436" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679199052248" />
+    <state x="717" y="374" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1681906510090">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="717" y="374" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681906510090" />
     <state x="717" y="335" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog" timestamp="1681196850339">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -361,54 +402,54 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679732569425" />
-    <state width="1293" height="315" key="GridCell.Tab.0.bottom" timestamp="1681889244641">
+    <state width="1293" height="275" key="GridCell.Tab.0.bottom" timestamp="1681994185867">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="315" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681889244641" />
-    <state width="1293" height="315" key="GridCell.Tab.0.center" timestamp="1681889244641">
+    <state width="1293" height="275" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681994185867" />
+    <state width="1293" height="275" key="GridCell.Tab.0.center" timestamp="1681994185866">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="315" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681889244641" />
-    <state width="1293" height="315" key="GridCell.Tab.0.left" timestamp="1681889244641">
+    <state width="1293" height="275" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681994185866" />
+    <state width="1293" height="275" key="GridCell.Tab.0.left" timestamp="1681994185866">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="315" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681889244641" />
-    <state width="1293" height="315" key="GridCell.Tab.0.right" timestamp="1681889244641">
+    <state width="1293" height="275" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681994185866" />
+    <state width="1293" height="275" key="GridCell.Tab.0.right" timestamp="1681994185866">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="315" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681889244641" />
-    <state width="1293" height="315" key="GridCell.Tab.1.bottom" timestamp="1681889244642">
+    <state width="1293" height="275" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681994185866" />
+    <state width="1293" height="275" key="GridCell.Tab.1.bottom" timestamp="1681994185867">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="315" key="GridCell.Tab.1.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681889244642" />
-    <state width="1293" height="315" key="GridCell.Tab.1.center" timestamp="1681889244641">
+    <state width="1293" height="275" key="GridCell.Tab.1.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681994185867" />
+    <state width="1293" height="275" key="GridCell.Tab.1.center" timestamp="1681994185867">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="315" key="GridCell.Tab.1.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681889244641" />
-    <state width="1293" height="315" key="GridCell.Tab.1.left" timestamp="1681889244641">
+    <state width="1293" height="275" key="GridCell.Tab.1.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681994185867" />
+    <state width="1293" height="275" key="GridCell.Tab.1.left" timestamp="1681994185867">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="315" key="GridCell.Tab.1.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681889244641" />
-    <state width="1293" height="315" key="GridCell.Tab.1.right" timestamp="1681889244641">
+    <state width="1293" height="275" key="GridCell.Tab.1.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681994185867" />
+    <state width="1293" height="275" key="GridCell.Tab.1.right" timestamp="1681994185867">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="315" key="GridCell.Tab.1.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681889244641" />
-    <state width="1293" height="315" key="GridCell.Tab.2.bottom" timestamp="1681889244642">
+    <state width="1293" height="275" key="GridCell.Tab.1.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681994185867" />
+    <state width="1293" height="275" key="GridCell.Tab.2.bottom" timestamp="1681994185867">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="315" key="GridCell.Tab.2.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681889244642" />
-    <state width="1293" height="315" key="GridCell.Tab.2.center" timestamp="1681889244642">
+    <state width="1293" height="275" key="GridCell.Tab.2.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681994185867" />
+    <state width="1293" height="275" key="GridCell.Tab.2.center" timestamp="1681994185867">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="315" key="GridCell.Tab.2.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681889244642" />
-    <state width="1293" height="315" key="GridCell.Tab.2.left" timestamp="1681889244642">
+    <state width="1293" height="275" key="GridCell.Tab.2.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681994185867" />
+    <state width="1293" height="275" key="GridCell.Tab.2.left" timestamp="1681994185867">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="315" key="GridCell.Tab.2.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681889244642" />
-    <state width="1293" height="315" key="GridCell.Tab.2.right" timestamp="1681889244642">
+    <state width="1293" height="275" key="GridCell.Tab.2.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681994185867" />
+    <state width="1293" height="275" key="GridCell.Tab.2.right" timestamp="1681994185867">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1293" height="315" key="GridCell.Tab.2.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681889244642" />
+    <state width="1293" height="275" key="GridCell.Tab.2.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681994185867" />
     <state width="220" height="539" key="HiddenNamespacesPopup" timestamp="1679497050100">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -437,10 +478,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="213" key="extract.method.dialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679214796865" />
-    <state x="663" y="94" width="649" height="852" key="find.popup" timestamp="1681868749837">
+    <state x="663" y="94" width="649" height="852" key="find.popup" timestamp="1681993601086">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="663" y="94" width="649" height="852" key="find.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681868749837" />
+    <state x="663" y="94" width="649" height="852" key="find.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681993601086" />
     <state width="600" height="428" key="javadoc.popup" timestamp="1679222052292">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -449,10 +490,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="334" y="94" key="new project wizard/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1679187382497" />
-    <state x="616" y="173" width="672" height="676" key="search.everywhere.popup" timestamp="1681887441078">
+    <state x="616" y="173" width="672" height="676" key="search.everywhere.popup" timestamp="1681892283862">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="173" width="672" height="676" key="search.everywhere.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681887441078" />
+    <state x="616" y="173" width="672" height="676" key="search.everywhere.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1681892283862" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -517,6 +558,7 @@
         <watch expression="userMessage.getReceivedUserId()" />
         <watch expression="sysSettingDto.getPostSetting().getPostDayCountThreshold()" />
         <watch expression=" sysSettingDto.getPostSetting().getPostDayCountThreshold()" />
+        <watch expression="sysSettingDto" />
       </configuration>
       <configuration name="Application">
         <watch expression="headerInfoList" />
