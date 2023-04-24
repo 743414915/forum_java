@@ -388,7 +388,7 @@ public class ForumArticleServiceImpl implements ForumArticleService {
     @Transactional(rollbackFor = Exception.class)
     public void auditArticleSignle(String articleId) throws BusinessException {
         ForumArticle article = getForumArticleByArticleId(articleId);
-        if (article == null || ArticleStatusEnum.NO_AUDIT.getStatus().equals(article.getStatus())) {
+        if (article == null || !ArticleStatusEnum.NO_AUDIT.getStatus().equals(article.getStatus())) {
             return;
         }
         ForumArticle updateInfo = new ForumArticle();

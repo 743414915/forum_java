@@ -159,7 +159,7 @@ public class ForumArticleController extends ABaseController {
         commentQuery.setLoadChildren(true);
         commentQuery.setOrderBy("post_time desc");
         commentQuery.setPCommentId(0);
-        return getSuccessResponseVO(forumCommentService.findCountByParam(commentQuery));
+        return getSuccessResponseVO(forumCommentService.findListByParam(commentQuery));
     }
 
     @RequestMapping("/delComment")

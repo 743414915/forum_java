@@ -27,12 +27,12 @@ public class SysSettingController extends ABaseController {
     private AdminConfig adminConfig;
 
     @RequestMapping("/getSetting")
-    private ResponseVO getSetting() throws BusinessException {
+    public ResponseVO getSetting() throws BusinessException {
         return getSuccessResponseVO(sysSettingService.refreshCache());
     }
 
     @RequestMapping("/saveSetting")
-    private ResponseVO saveSetting(SysSetting4AuditDto auditDto,
+    public ResponseVO saveSetting(SysSetting4AuditDto auditDto,
                                    SysSetting4CommentDto commentDto,
                                    SysSetting4EmailDto emailDto,
                                    SysSetting4LikeDto likeDto,
@@ -50,7 +50,7 @@ public class SysSettingController extends ABaseController {
         return getSuccessResponseVO(null);
     }
 
-    private void sendWebRequest() throws BusinessException {
+    public void sendWebRequest() throws BusinessException {
         String appKey = adminConfig.getInnerApiAppKey();
         String appSecret = adminConfig.getInnerApiSecret();
         Long timeStamp = System.currentTimeMillis();

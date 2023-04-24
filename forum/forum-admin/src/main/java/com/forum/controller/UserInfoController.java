@@ -21,14 +21,14 @@ public class UserInfoController extends ABaseController {
     private UserInfoService userInfoService;
 
     @RequestMapping("/loadUserList")
-    private ResponseVO loadUserList(UserInfoQuery userInfoQuery) {
+    public ResponseVO loadUserList(UserInfoQuery userInfoQuery) {
         userInfoQuery.setOrderBy("join_time desc");
         return getSuccessResponseVO(userInfoService.findListByPage(userInfoQuery));
     }
 
     @RequestMapping("/updateUserStatus")
     @GlobalInterceptor(checkParams = true)
-    private ResponseVO updateUserStatus(@VerifyParam(required = true) Integer status,
+    public ResponseVO updateUserStatus(@VerifyParam(required = true) Integer status,
                                         @VerifyParam(required = true) String userId) {
         userInfoService.updateUserStatus(status, userId);
         return getSuccessResponseVO(null);
@@ -36,7 +36,7 @@ public class UserInfoController extends ABaseController {
 
     @RequestMapping("/sendMessage")
     @GlobalInterceptor(checkParams = true)
-    private ResponseVO sendMessage(@VerifyParam(required = true) String userId,
+    public ResponseVO sendMessage(@VerifyParam(required = true) String userId,
                                    @VerifyParam(required = true) String message,
                                    @VerifyParam(required = true) Integer integral) throws BusinessException {
         userInfoService.sendMessage(userId, message, integral);

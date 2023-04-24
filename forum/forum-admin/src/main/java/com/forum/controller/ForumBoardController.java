@@ -28,13 +28,13 @@ public class ForumBoardController extends ABaseController {
     private FileUtils fileUtils;
 
     @RequestMapping("/loadBoard")
-    private ResponseVO loadBoard() {
+    public ResponseVO loadBoard() {
         return getSuccessResponseVO(forumBoardService.getBoardTree(null));
     }
 
     @RequestMapping("/saveBoard")
     @GlobalInterceptor(checkParams = true)
-    private ResponseVO saveBoard(Integer boardId,
+    public ResponseVO saveBoard(Integer boardId,
                                  @VerifyParam(required = true) Integer pBoardId,
                                  @VerifyParam(required = true) String boardName,
                                  String boardDesc,
@@ -57,14 +57,14 @@ public class ForumBoardController extends ABaseController {
 
     @RequestMapping("/delBoard")
     @GlobalInterceptor(checkParams = true)
-    private ResponseVO delBoard(@VerifyParam(required = true) Integer boardId) {
+    public ResponseVO delBoard(@VerifyParam(required = true) Integer boardId) {
         forumBoardService.deleteForumBoardByBoardId(boardId);
         return getSuccessResponseVO(null);
     }
 
     @RequestMapping("/changeBoardSort")
     @GlobalInterceptor(checkParams = true)
-    private ResponseVO changeBoardSort(@VerifyParam(required = true) String boardIds) {
+    public ResponseVO changeBoardSort(@VerifyParam(required = true) String boardIds) {
         forumBoardService.changeBoardSort(boardIds);
         return getSuccessResponseVO(null);
     }
