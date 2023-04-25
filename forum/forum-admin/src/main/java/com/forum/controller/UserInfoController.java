@@ -38,7 +38,7 @@ public class UserInfoController extends ABaseController {
     @GlobalInterceptor(checkParams = true)
     public ResponseVO sendMessage(@VerifyParam(required = true) String userId,
                                    @VerifyParam(required = true) String message,
-                                   @VerifyParam(required = true) Integer integral) throws BusinessException {
+                                   Integer integral) throws BusinessException {
         userInfoService.sendMessage(userId, message, integral);
         return getSuccessResponseVO(null);
     }

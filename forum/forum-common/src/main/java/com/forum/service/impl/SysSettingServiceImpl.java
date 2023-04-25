@@ -156,7 +156,7 @@ public class SysSettingServiceImpl implements SysSettingService {
             Class classz = SysSettingDto.class;
             for (SysSettingCodeEnum codeEnum : SysSettingCodeEnum.values()) {
                 PropertyDescriptor pd = new PropertyDescriptor(codeEnum.getPropName(), classz);
-                Method method = pd.getWriteMethod();
+                Method method = pd.getReadMethod();
                 Object obj = method.invoke(sysSettingDto);
                 SysSetting sysSetting = new SysSetting();
                 sysSetting.setCode(codeEnum.getCode());

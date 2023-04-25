@@ -55,7 +55,7 @@ public class SysSettingController extends ABaseController {
         String appSecret = adminConfig.getInnerApiSecret();
         Long timeStamp = System.currentTimeMillis();
         String sign = StringTools.encodeMd5(appKey + timeStamp + appSecret);
-        String url = adminConfig.getWebApiUrl() + "?appKey=" + appKey + "&timestamp=" + timeStamp + "&sign=" + sign;
+            String url = adminConfig.getWebApiUrl() + "?appKey=" + appKey + "&timestamp=" + timeStamp + "&sign=" + sign;
         String responseJson = OKHttpUtils.getRequest(url);
         ResponseVO responseVO = JsonUtils.convertJson2Obj(responseJson, ResponseVO.class);
         if (!STATUS_SUCCESS.equals(responseVO.getStatus())) {

@@ -318,8 +318,8 @@ public class ForumCommentServiceImpl implements ForumCommentService {
             return;
         }
         ForumComment forumComment = new ForumComment();
-        forumComment.setStatus(comment.getStatus());
-        forumCommentMapper.updateByCommentId(comment, commentId);
+        forumComment.setStatus(CommentStatusEnum.AUDIT.getStatus());
+        forumCommentMapper.updateByCommentId(forumComment, commentId);
         ForumArticle forumArticle = forumArticleMapper.selectByArticleId(comment.getArticleId());
         ForumComment pComment = null;
         if (comment.getPCommentId() != 0 && StringTools.isEmpty(comment.getReplyUserId())) {

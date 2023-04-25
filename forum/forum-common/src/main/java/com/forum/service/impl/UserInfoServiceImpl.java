@@ -340,7 +340,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Transactional(rollbackFor = Exception.class)
     public void sendMessage(String userId, String message, Integer integral) throws BusinessException {
         UserMessage userMessage = new UserMessage();
-        userMessage.setSendUserId(userId);
+        userMessage.setReceivedUserId(userId);
         userMessage.setMessageType(MessageTypeEnum.SYS.getType());
         userMessage.setCreateTime(new Date());
         userMessage.setStatus(MessageStatusEnum.NO_READ.getStatus());
