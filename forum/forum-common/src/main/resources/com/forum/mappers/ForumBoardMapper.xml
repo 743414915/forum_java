@@ -93,7 +93,7 @@
 
 	<!--插入（匹配有值的字段）-->
 	<insert id="insert" parameterType="com.forum.entity.po.ForumBoard">
-		<selectKey keyProperty="bean.board_id" resultType="Integer" order="AFTER">
+		<selectKey keyProperty="bean.boardId" resultType="Integer" order="AFTER">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 		INSERT INTO forum_board

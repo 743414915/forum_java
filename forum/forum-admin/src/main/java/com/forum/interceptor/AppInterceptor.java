@@ -38,7 +38,7 @@ public class AppInterceptor implements HandlerInterceptor {
             return true;
         }
         checkLogin();
-        return false;
+        return true;
     }
 
     private void checkLogin() throws BusinessException {

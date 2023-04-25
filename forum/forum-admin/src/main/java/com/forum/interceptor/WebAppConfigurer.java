@@ -6,10 +6,14 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Configuration("webAppConfigurer")
 public class WebAppConfigurer implements WebMvcConfigurer {
+
+    @Resource
+    private AppInterceptor appInterceptor;
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
@@ -18,7 +22,7 @@ public class WebAppConfigurer implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-
+        registry.addInterceptor(appInterceptor).addPathPatterns("/**");
     }
 
     @Override
