@@ -209,6 +209,7 @@ public class UserInfoServiceImpl implements UserInfoService {
         insertInfo.setStatus(UserStatusEnum.ENABLE.getStatus());
         insertInfo.setTotalIntegral(Constants.ZERO);
         insertInfo.setCurrentIntegral(Constants.ZERO);
+        insertInfo.setSex(1);
         this.userInfoMapper.insert(insertInfo);
 
         // 更新用户积分
